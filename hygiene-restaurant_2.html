@@ -1,0 +1,2305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hygiène & HACCP — Règles Essentielles en Restauration</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0e0e0e;
+    --bg2: #161616;
+    --bg3: #1e1e1e;
+    --card: #1a1a1a;
+    --border: #2a2a2a;
+    --red: #e63946;
+    --red-dark: #c1121f;
+    --orange: #f4a261;
+    --green: #2dc653;
+    --yellow: #ffd60a;
+    --text: #f0ede8;
+    --muted: #888;
+    --accent: #e63946;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(14,14,14,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    color: var(--red);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .nav-logo span { color: var(--text); }
+  .nav-tabs { display: flex; gap: 4px; }
+  .nav-tab {
+    padding: 6px 18px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background: none;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all .2s;
+    letter-spacing: 0.5px;
+  }
+  .nav-tab.active, .nav-tab:hover {
+    background: var(--red);
+    color: #fff;
+    border-color: var(--red);
+  }
+  .nav-full { display: inline; }
+  .nav-short { display: none; }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    padding: 80px 2rem 60px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(230,57,70,.15) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    padding: 4px 14px;
+    background: rgba(230,57,70,.15);
+    border: 1px solid rgba(230,57,70,.4);
+    border-radius: 20px;
+    color: var(--red);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3rem, 8vw, 6rem);
+    letter-spacing: 3px;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+  .hero h1 em { color: var(--red); font-style: normal; }
+  .hero p {
+    max-width: 600px; margin: 0 auto 2rem;
+    color: #aaa;
+    font-size: 1.05rem;
+    font-weight: 300;
+  }
+  .hero-stats {
+    display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;
+    margin-top: 2.5rem;
+  }
+  .hero-stat {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 24px;
+    text-align: center;
+  }
+  .hero-stat strong {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--red);
+  }
+  .hero-stat span { font-size: 0.8rem; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+
+  /* ─── SECTIONS ─── */
+  .page { display: none; }
+  .page.active { display: block; }
+
+  /* ─── REFERENCE PAGE ─── */
+  .section-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+    padding: 0 2rem 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .module {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform .2s, border-color .2s;
+  }
+  .module:hover {
+    transform: translateY(-3px);
+    border-color: var(--red);
+  }
+  .module-header {
+    padding: 20px 22px 14px;
+    display: flex; align-items: center; gap: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .module-icon {
+    width: 46px; height: 46px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+  .icon-red { background: rgba(230,57,70,.15); }
+  .icon-orange { background: rgba(244,162,97,.15); }
+  .icon-yellow { background: rgba(255,214,10,.1); }
+  .icon-green { background: rgba(45,198,83,.1); }
+  .icon-blue { background: rgba(72,149,239,.1); }
+  .icon-purple { background: rgba(139,92,246,.1); }
+
+  .module-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 1.5px;
+  }
+  .module-subtitle { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+
+  .module-body { padding: 18px 22px 20px; }
+
+  .rule-item {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-bottom: 12px;
+  }
+  .rule-item:last-child { margin-bottom: 0; }
+  .rule-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+  .dot-red { background: var(--red); }
+  .dot-orange { background: var(--orange); }
+  .dot-yellow { background: var(--yellow); }
+  .dot-green { background: var(--green); }
+
+  .rule-text { font-size: 0.88rem; line-height: 1.5; color: #ccc; }
+  .rule-text strong { color: var(--text); font-weight: 600; }
+
+  .alert-box {
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    display: flex; align-items: flex-start; gap: 8px;
+  }
+  .alert-danger { background: rgba(230,57,70,.1); border: 1px solid rgba(230,57,70,.25); color: #ff8c94; }
+  .alert-warning { background: rgba(255,214,10,.07); border: 1px solid rgba(255,214,10,.2); color: #ffe566; }
+  .alert-info { background: rgba(72,149,239,.08); border: 1px solid rgba(72,149,239,.2); color: #88c1ff; }
+  .alert-success { background: rgba(45,198,83,.08); border: 1px solid rgba(45,198,83,.2); color: #6ee99c; }
+
+  .temp-table {
+    width: 100%; border-collapse: collapse; margin-top: 12px;
+  }
+  .temp-table th {
+    background: var(--bg3);
+    padding: 8px 10px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    font-family: 'DM Mono', monospace;
+  }
+  .temp-table td {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+    color: #ccc;
+  }
+  .temp-table td:last-child {
+    font-family: 'DM Mono', monospace;
+    font-weight: 500;
+    color: var(--yellow);
+  }
+  .temp-row-hot td { background: rgba(230,57,70,.04); }
+  .temp-row-cold td { background: rgba(72,149,239,.04); }
+
+  /* ─── QUIZ ─── */
+  #quizPage { padding: 2rem; max-width: 800px; margin: 0 auto 4rem; }
+  .quiz-header { text-align: center; margin-bottom: 2rem; }
+  .quiz-header h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+  }
+  .quiz-header p { color: var(--muted); font-size: 0.9rem; }
+
+  .quiz-progress-bar {
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    margin-bottom: 2rem;
+    overflow: hidden;
+  }
+  .quiz-progress-fill {
+    height: 100%;
+    background: var(--red);
+    border-radius: 2px;
+    transition: width .4s ease;
+  }
+
+  .quiz-meta {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  .quiz-counter {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--muted);
+  }
+  .quiz-score-live {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.85rem;
+    background: var(--bg3);
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+  }
+
+  .quiz-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 28px;
+    margin-bottom: 1.5rem;
+  }
+  .quiz-category {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .cat-froid { background: rgba(72,149,239,.2); color: #88c1ff; }
+  .cat-haccp { background: rgba(139,92,246,.2); color: #c4b5fd; }
+  .cat-nettoyage { background: rgba(45,198,83,.15); color: #6ee99c; }
+  .cat-stockage { background: rgba(244,162,97,.2); color: #fbc896; }
+  .cat-hygiene { background: rgba(230,57,70,.15); color: #ff8c94; }
+  .cat-tracabilite { background: rgba(255,214,10,.1); color: #ffe566; }
+
+  .quiz-question {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+    color: var(--text);
+  }
+
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  @media (max-width: 500px) { .options-grid { grid-template-columns: 1fr; } }
+
+  .option-btn {
+    padding: 14px 16px;
+    background: var(--bg3);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-align: left;
+    transition: all .15s;
+    line-height: 1.4;
+  }
+  .option-btn:hover:not(:disabled) {
+    border-color: var(--red);
+    background: rgba(230,57,70,.08);
+  }
+  .option-btn.correct {
+    border-color: var(--green) !important;
+    background: rgba(45,198,83,.12) !important;
+    color: #6ee99c !important;
+  }
+  .option-btn.wrong {
+    border-color: var(--red) !important;
+    background: rgba(230,57,70,.12) !important;
+    color: #ff8c94 !important;
+  }
+  .option-btn:disabled { cursor: default; }
+
+  .quiz-feedback {
+    margin-top: 14px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    display: none;
+  }
+  .feedback-correct { background: rgba(45,198,83,.1); border: 1px solid rgba(45,198,83,.25); color: #6ee99c; }
+  .feedback-wrong { background: rgba(230,57,70,.1); border: 1px solid rgba(230,57,70,.25); color: #ff8c94; }
+
+  .quiz-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background: var(--red);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background .2s;
+    margin-top: 1rem;
+    display: none;
+  }
+  .quiz-btn:hover { background: var(--red-dark); }
+
+  .quiz-results {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 36px 28px;
+    text-align: center;
+    display: none;
+  }
+  .results-score {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    color: var(--red);
+    line-height: 1;
+  }
+  .results-label {
+    font-size: 0.85rem;
+    color: var(--muted);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .results-verdict {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+  .results-sub { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+  .results-breakdown {
+    display: flex; justify-content: center; gap: 2rem;
+    margin: 1.5rem 0 2rem;
+  }
+  .breakdown-item { text-align: center; }
+  .breakdown-item strong {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+  }
+  .breakdown-item span { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .b-correct strong { color: var(--green); }
+  .b-wrong strong { color: var(--red); }
+
+  .restart-btn {
+    padding: 12px 32px;
+    background: var(--red);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background .2s;
+  }
+  .restart-btn:hover { background: var(--red-dark); }
+
+  /* ─── CLEANING GUIDE ─── */
+  .clean-hero {
+    padding: 50px 2rem 30px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .clean-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(45,198,83,.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .clean-hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    letter-spacing: 3px; line-height: 1; margin-bottom: .8rem;
+  }
+  .clean-hero h1 em { color: var(--green); font-style: normal; }
+  .clean-hero p { color: #aaa; max-width: 560px; margin: 0 auto 1.5rem; font-size: 1rem; font-weight: 300; }
+
+  .zone-tabs {
+    display: flex; justify-content: center; gap: 8px; flex-wrap: wrap;
+    padding: 0 2rem 2rem;
+  }
+  .zone-tab-btn {
+    padding: 8px 22px;
+    background: var(--card);
+    border: 1.5px solid var(--border);
+    border-radius: 30px;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.85rem; font-weight: 500;
+    cursor: pointer; transition: all .2s;
+  }
+  .zone-tab-btn.active, .zone-tab-btn:hover {
+    border-color: var(--green);
+    color: var(--green);
+    background: rgba(45,198,83,.08);
+  }
+
+  .zone-panel { display: none; }
+  .zone-panel.active { display: block; }
+
+  .clean-container {
+    max-width: 1100px; margin: 0 auto; padding: 0 2rem 4rem;
+  }
+
+  /* freq legend */
+  .freq-legend {
+    display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 2rem;
+    padding: 14px 18px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .freq-pill {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 0.78rem; color: var(--muted);
+  }
+  .freq-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .fd-daily { background: #e63946; }
+  .fd-service { background: #f4a261; }
+  .fd-weekly { background: #ffd60a; }
+  .fd-monthly { background: #2dc653; }
+
+  /* task table */
+  .task-section { margin-bottom: 2rem; }
+  .task-section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem; letter-spacing: 2px;
+    color: var(--muted);
+    text-transform: uppercase;
+    padding: 0 0 8px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 0;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .task-table {
+    width: 100%; border-collapse: collapse;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .task-table thead th {
+    background: var(--bg3);
+    padding: 10px 14px;
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: left;
+    font-family: 'DM Mono', monospace;
+    font-weight: 400;
+  }
+  .task-table tbody td {
+    padding: 11px 14px;
+    font-size: 0.86rem;
+    border-top: 1px solid var(--border);
+    vertical-align: top;
+    color: #ccc;
+  }
+  .task-table tbody tr:hover td { background: rgba(255,255,255,.02); }
+  .task-name { font-weight: 500; color: var(--text); }
+  .task-method { font-size: 0.8rem; color: var(--muted); margin-top: 3px; }
+  .task-product {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: #aaa;
+  }
+  .freq-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .fb-service { background: rgba(244,162,97,.15); color: var(--orange); border: 1px solid rgba(244,162,97,.3); }
+  .fb-daily   { background: rgba(230,57,70,.12);  color: #ff8c94;       border: 1px solid rgba(230,57,70,.25); }
+  .fb-weekly  { background: rgba(255,214,10,.08); color: var(--yellow);  border: 1px solid rgba(255,214,10,.2); }
+  .fb-monthly { background: rgba(45,198,83,.1);   color: var(--green);   border: 1px solid rgba(45,198,83,.2); }
+  .fb-special { background: rgba(139,92,246,.1);  color: #c4b5fd;        border: 1px solid rgba(139,92,246,.2); }
+
+  .priority-high::before   { content:'🔴 '; }
+  .priority-medium::before { content:'🟠 '; }
+  .priority-low::before    { content:'🟡 '; }
+
+  .clean-tip {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--green);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-size: 0.84rem;
+    color: #bbb;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  .clean-tip strong { color: var(--text); }
+
+  /* ─── CHECKLIST ─── */
+  .checklist-page { max-width: 860px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+  .checklist-hero {
+    text-align: center; padding: 50px 0 30px;
+    position: relative; overflow: hidden;
+  }
+  .checklist-hero::before {
+    content: ''; position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 50% 0%, rgba(255,214,10,.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .checklist-hero h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    letter-spacing: 3px; line-height: 1; margin-bottom: .8rem;
+  }
+  .checklist-hero h1 em { color: var(--yellow); font-style: normal; }
+  .checklist-hero p { color: #aaa; max-width: 500px; margin: 0 auto; font-size: .95rem; font-weight: 300; }
+
+  .cl-form-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    margin-bottom: 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    align-items: end;
+  }
+  @media(max-width:600px){ .cl-form-card { grid-template-columns: 1fr; } }
+  .cl-field label {
+    display: block;
+    font-size: .75rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .cl-field input, .cl-field select {
+    width: 100%;
+    padding: 10px 14px;
+    background: var(--bg3);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: .9rem;
+    outline: none;
+    transition: border-color .2s;
+  }
+  .cl-field input:focus, .cl-field select:focus { border-color: var(--yellow); }
+  .cl-field input::placeholder { color: var(--muted); }
+  .cl-field select option { background: var(--bg3); }
+
+  .cl-section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+  .cl-section-header {
+    padding: 16px 20px;
+    display: flex; align-items: center; gap: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .cl-section-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .badge-daily   { background: rgba(230,57,70,.15);  color: #ff8c94;  border:1px solid rgba(230,57,70,.3); }
+  .badge-weekly  { background: rgba(255,214,10,.1);  color: var(--yellow); border:1px solid rgba(255,214,10,.25); }
+  .cl-section-title-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 1.5px;
+  }
+  .cl-progress-line {
+    height: 3px; background: var(--border);
+  }
+  .cl-progress-fill {
+    height: 100%; background: var(--yellow);
+    transition: width .3s ease;
+    border-radius: 0 2px 2px 0;
+  }
+  .cl-items { padding: 8px 0; }
+  .cl-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 11px 20px;
+    border-bottom: 1px solid rgba(255,255,255,.03);
+    cursor: pointer;
+    transition: background .15s;
+  }
+  .cl-item:last-child { border-bottom: none; }
+  .cl-item:hover { background: rgba(255,255,255,.02); }
+  .cl-checkbox {
+    width: 20px; height: 20px;
+    border: 2px solid var(--border);
+    border-radius: 5px;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all .15s;
+    background: var(--bg3);
+  }
+  .cl-item.done .cl-checkbox {
+    background: var(--green);
+    border-color: var(--green);
+  }
+  .cl-item.done .cl-checkbox::after { content: '✓'; color: #fff; font-size: .85rem; font-weight: 700; }
+  .cl-item.done .cl-label { text-decoration: line-through; color: var(--muted); }
+  .cl-label { font-size: .9rem; line-height: 1.4; color: #ccc; }
+  .cl-label strong { color: var(--text); font-weight: 600; }
+  .cl-label small { display: block; font-size: .76rem; color: var(--muted); margin-top: 2px; }
+  .cl-zone-tag {
+    margin-left: auto; flex-shrink: 0;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: .68rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .zt-cuisine { background: rgba(244,162,97,.15); color: var(--orange); }
+  .zt-bar     { background: rgba(72,149,239,.15);  color: #88c1ff; }
+  .zt-both    { background: rgba(139,92,246,.15);  color: #c4b5fd; }
+
+  .cl-counter {
+    font-size: .78rem; color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    margin-left: auto;
+  }
+
+  .cl-send-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 24px;
+    display: flex; flex-direction: column; align-items: center; gap: 14px;
+    text-align: center;
+  }
+  .cl-send-btn {
+    padding: 14px 40px;
+    background: var(--yellow);
+    color: #0e0e0e;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: background .2s, transform .1s;
+  }
+  .cl-send-btn:hover { background: #e6c000; transform: translateY(-1px); }
+  .cl-send-btn:disabled { background: var(--border); color: var(--muted); cursor: not-allowed; transform: none; }
+  .cl-send-note { font-size: .8rem; color: var(--muted); max-width: 450px; line-height: 1.5; }
+  .cl-summary-preview {
+    width: 100%;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: .76rem;
+    color: var(--muted);
+    text-align: left;
+    line-height: 1.8;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+  }
+  .cl-success-msg {
+    padding: 12px 16px;
+    background: rgba(45,198,83,.1);
+    border: 1px solid rgba(45,198,83,.25);
+    border-radius: 8px;
+    color: var(--green);
+    font-size: .88rem;
+    display: none;
+  }
+
+  /* ─── Section title ─── */
+  .section-title {
+    text-align: center;
+    padding: 2.5rem 2rem 1.5rem;
+  }
+  .section-title h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 0.4rem;
+  }
+  .section-title p { color: var(--muted); font-size: 0.88rem; max-width: 500px; margin: 0 auto; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 1.5rem 2rem;
+    text-align: center;
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(20px); }
+    to { opacity:1; transform:translateY(0); }
+  }
+  .module { animation: fadeUp .4s ease both; }
+  .module:nth-child(1) { animation-delay: .05s; }
+  .module:nth-child(2) { animation-delay: .1s; }
+  .module:nth-child(3) { animation-delay: .15s; }
+  .module:nth-child(4) { animation-delay: .2s; }
+  .module:nth-child(5) { animation-delay: .25s; }
+  .module:nth-child(6) { animation-delay: .3s; }
+  .module:nth-child(7) { animation-delay: .35s; }
+  .module:nth-child(8) { animation-delay: .4s; }
+
+  /* ══════════════════════════════════════════
+     RESPONSIVE — TABLETTE (≤ 768px)
+  ══════════════════════════════════════════ */
+  @media (max-width: 768px) {
+
+    /* NAV : logo court + onglets sous forme d'icônes */
+    nav {
+      height: auto;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px 1rem;
+      gap: 8px;
+    }
+    .nav-logo { font-size: 1.2rem; }
+    .nav-tabs {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px;
+    }
+    .nav-tab {
+      padding: 7px 6px;
+      font-size: 0.75rem;
+      text-align: center;
+      letter-spacing: 0;
+    }
+    .nav-full { display: none; }
+    .nav-short { display: inline; }
+
+    /* HERO */
+    .hero { padding: 40px 1.2rem 30px; }
+    .hero-stats {
+      gap: 10px;
+      justify-content: center;
+    }
+    .hero-stat {
+      padding: 10px 14px;
+      min-width: 80px;
+    }
+    .hero-stat strong { font-size: 1.5rem; }
+
+    /* SECTION GRID */
+    .section-grid {
+      grid-template-columns: 1fr;
+      padding: 0 1rem 2rem;
+      gap: 1rem;
+    }
+
+    /* QUIZ */
+    #quizPage { padding: 1rem; }
+    .options-grid { grid-template-columns: 1fr; }
+    .quiz-card { padding: 18px; }
+    .quiz-meta { flex-direction: column; gap: 8px; }
+
+    /* CLEANING GUIDE */
+    .clean-container { padding: 0 1rem 3rem; }
+    .zone-tabs { padding: 0 1rem 1.5rem; gap: 6px; }
+    .zone-tab-btn { padding: 7px 14px; font-size: 0.8rem; }
+
+    /* Tables : masquer colonnes secondaires, laisser visible l'essentiel */
+    .task-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .task-table thead th:nth-child(3),
+    .task-table tbody td:nth-child(3) { display: none; }
+
+    /* CHECKLIST */
+    .checklist-page { padding: 0 1rem 3rem; }
+    .cl-form-card { grid-template-columns: 1fr; gap: 12px; padding: 16px; }
+    .cl-section-header { flex-wrap: wrap; gap: 8px; }
+    .cl-section-title-text { font-size: 1rem; }
+    .cl-item { padding: 10px 14px; gap: 10px; }
+    .cl-zone-tag { display: none; } /* masqué sur mobile — trop étroit */
+
+    /* Résultats quiz */
+    .results-breakdown { gap: 1.2rem; }
+    .results-score { font-size: 4rem; }
+
+    /* Freq legend */
+    .freq-legend { flex-direction: column; gap: 8px; }
+  }
+
+  /* ══════════════════════════════════════════
+     RESPONSIVE — MOBILE (≤ 480px)
+  ══════════════════════════════════════════ */
+  @media (max-width: 480px) {
+
+    body { font-size: 14px; }
+
+    /* NAV : onglets 2×2 plus compacts */
+    .nav-tab { font-size: 0.7rem; padding: 6px 4px; }
+
+    /* HERO */
+    .hero { padding: 28px 1rem 20px; }
+    .hero h1 { font-size: 3rem; }
+    .hero p { font-size: 0.88rem; }
+    .hero-stats { gap: 8px; }
+    .hero-stat { padding: 8px 10px; min-width: 68px; }
+    .hero-stat strong { font-size: 1.25rem; }
+    .hero-stat span { font-size: 0.65rem; }
+
+    /* SECTION GRID */
+    .section-grid { padding: 0 0.75rem 1.5rem; gap: 0.75rem; }
+    .module-header { padding: 14px 16px 10px; gap: 10px; }
+    .module-body { padding: 14px 16px 16px; }
+    .module-icon { width: 38px; height: 38px; font-size: 1.1rem; }
+    .module-title { font-size: 1.05rem; }
+
+    /* Tables : scroll horizontal + padding réduit */
+    .task-table thead th,
+    .task-table tbody td { padding: 8px 10px; font-size: 0.78rem; }
+    .task-name { font-size: 0.82rem; }
+    .task-method { font-size: 0.72rem; }
+
+    /* CHECKLIST */
+    .checklist-hero { padding: 28px 1rem 16px; }
+    .checklist-hero h1 { font-size: 2.8rem; }
+    .cl-section-badge { font-size: 0.65rem; padding: 3px 8px; }
+    .cl-section-title-text { font-size: 0.9rem; }
+    .cl-label strong { font-size: 0.84rem; }
+    .cl-label small { font-size: 0.72rem; }
+    .cl-send-btn { padding: 12px 24px; font-size: 0.95rem; }
+    .cl-checkbox { width: 18px; height: 18px; }
+
+    /* QUIZ */
+    .quiz-header h2 { font-size: 1.8rem; }
+    .option-btn { padding: 12px 14px; font-size: 0.84rem; }
+    .quiz-card { padding: 14px; }
+
+    /* NETTOYAGE hero */
+    .clean-hero { padding: 28px 1rem 16px; }
+    .zone-tabs { padding: 0 0.75rem 1.2rem; gap: 5px; }
+    .zone-tab-btn { padding: 6px 10px; font-size: 0.75rem; }
+
+    /* Temp table dans référentiel */
+    .temp-table th, .temp-table td { padding: 6px 8px; font-size: 0.78rem; }
+
+    /* Alert boxes */
+    .alert-box { font-size: 0.78rem; padding: 10px 12px; }
+
+    /* Section title */
+    .section-title { padding: 1.5rem 1rem 1rem; }
+    .section-title h2 { font-size: 1.7rem; }
+
+    /* Quiz résultats */
+    .quiz-results { padding: 24px 16px; }
+    .results-score { font-size: 3.5rem; }
+    .results-breakdown { gap: 1rem; }
+
+    /* Footer */
+    footer { padding: 1rem; font-size: 0.72rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">⚠️ HACCP <span>ESSENTIEL</span></div>
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showPage('ref')"><span class="nav-full">📋 Référentiel</span><span class="nav-short">📋</span></button>
+    <button class="nav-tab" onclick="showPage('clean')"><span class="nav-full">🧹 Guide Nettoyage</span><span class="nav-short">🧹 Nettoyage</span></button>
+    <button class="nav-tab" onclick="showPage('checklist')"><span class="nav-full">✅ Checklist Équipe</span><span class="nav-short">✅ Checklist</span></button>
+    <button class="nav-tab" onclick="showPage('quiz')"><span class="nav-full">🎯 Quiz Équipe</span><span class="nav-short">🎯 Quiz</span></button>
+  </div>
+</nav>
+
+<!-- ══════════════ REFERENCE PAGE ══════════════ -->
+<div id="refPage" class="page active">
+
+  <div class="hero">
+    <div class="hero-badge">Réglementation française — Règlement CE 852/2004</div>
+    <h1>HYGIÈNE<br><em>ALIMENTAIRE</em></h1>
+    <p>Les règles fondamentales à connaître et appliquer chaque jour pour protéger vos clients et votre établissement.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>37°C</strong><span>Temp. de danger</span></div>
+      <div class="hero-stat"><strong>+63°C</strong><span>Liaison chaude</span></div>
+      <div class="hero-stat"><strong>−18°C</strong><span>Congélation</span></div>
+      <div class="hero-stat"><strong>4°C</strong><span>Réfrigération max</span></div>
+    </div>
+  </div>
+
+  <div class="section-title">
+    <h2>LES <em style="color:var(--red)">8 PILIERS</em> DE L'HYGIÈNE</h2>
+    <p>Chaque règle protège vos clients contre les intoxications alimentaires. Une seule négligence peut avoir des conséquences graves.</p>
+  </div>
+
+  <div class="section-grid">
+
+    <!-- CHAÎNE DU FROID -->
+    <div class="module">
+      <div class="module-header">
+        <div class="module-icon icon-blue">❄️</div>
+        <div>
+          <div class="module-title">Chaîne du Froid</div>
+          <div class="module-subtitle">La règle d'or : ne jamais rompre</div>
+        </div>
+      </div>
+      <div class="module-body">
+        <table class="temp-table">
+          <tr><th>Denrée</th><th>Température max.</th></tr>
+          <tr class="temp-row-cold"><td>Viandes / charcuteries</td><td>+4°C</td></tr>
+          <tr class="temp-row-cold"><td>Poissons / coquillages</td><td>+2°C</td></tr>
+          <tr class="temp-row-cold"><td>Produits laitiers</td><td>+4°C</td></tr>
+          <tr class="temp-row-cold"><td>Fruits & légumes coupés</td><td>+4°C</td></tr>
+          <tr class="temp-row-cold"><td>Surgelés</td><td>−18°C</td></tr>
+          <tr class="temp-row-hot"><td>Plats chauds (service)</td><td>&gt; +63°C</td></tr>
+        </table>
+        <div class="alert-box alert-danger" style="margin-top:14px">
+          ⚠️ <span>La <strong>zone de danger</strong> se situe entre <strong>+4°C et +63°C</strong>. Les bactéries se multiplient par 2 toutes les 20 minutes dans cette plage.</span>
+        </div>
+        <div class="rule-item" style="margin-top:12px">
+          <div class="rule-dot dot-red"></div>
+          <div class="rule-text">Relever les températures <strong>2 fois par jour</strong> minimum (ouverture + fermeture)</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-red"></div>
+          <div class="rule-text">Temps de rupture toléré : <strong>30 min maximum</strong> lors de la réception</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-orange"></div>
+          <div class="rule-text">Refroidissement rapide obligatoire : de <strong>+63°C à +10°C en moins de 2h</strong></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STOCKAGE -->
+    <div class="module">
+      <div class="module-header">
+        <div class="module-icon icon-orange">📦</div>
+        <div>
+          <div class="module-title">Stockage des Denrées</div>
+          <div class="module-subtitle">Organisation & séparation absolues</div>
+        </div>
+      </div>
+      <div class="module-body">
+        <div class="rule-item">
+          <div class="rule-dot dot-red"></div>
+          <div class="rule-text">Méthode <strong>FIFO (Premier Entré / Premier Sorti)</strong> : toujours consommer en fonction des dates</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-red"></div>
+          <div class="rule-text"><strong>Séparation absolue</strong> des produits crus et cuits : risque majeur de contamination croisée</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-orange"></div>
+          <div class="rule-text"><strong>Jamais à même le sol</strong> : tout stockage doit être surélevé à minimum 15 cm</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-orange"></div>
+          <div class="rule-text">Produits d'entretien <strong>strictement séparés</strong> des denrées alimentaires</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-yellow"></div>
+          <div class="rule-text">Tout produit déballé doit être <strong>reconditionné et étiqueté</strong> avec une DLC secondaire</div>
+        </div>
+        <div class="alert-box alert-warning">
+          ⚡ <span>La règle du bas vers le haut : <strong>cru en bas, cuit en haut</strong> dans les frigos partagés. Un jus de viande crue sur un plat prêt = contamination grave.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RÉCEPTION MARCHANDISES -->
+    <div class="module">
+      <div class="module-header">
+        <div class="module-icon icon-yellow">🚛</div>
+        <div>
+          <div class="module-title">Réception des Marchandises</div>
+          <div class="module-subtitle">Contrôle obligatoire à chaque livraison</div>
+        </div>
+      </div>
+      <div class="module-body">
+        <div class="rule-item">
+          <div class="rule-dot dot-red"></div>
+          <div class="rule-text">Mesurer la <strong>température à cœur</strong> des produits réfrigérés dès la réception</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-red"></div>
+          <div class="rule-text">Vérifier la <strong>DLC / DDM</strong> sur chaque produit. Refuser si dépassée ou trop proche</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-orange"></div>
+          <div class="rule-text">Vérifier l'<strong>intégrité des emballages</strong> : gonflés, déchirés, rouillés → refus obligatoire</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-orange"></div>
+          <div class="rule-text">Conserver les <strong>étiquettes fournisseurs</strong> 3 ans minimum (traçabilité)</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-yellow"></div>
+          <div class="rule-text">Tout refus doit être <strong>noté et signé</strong> sur le bon de livraison. Archiver le document</div>
+        </div>
+        <div class="alert-box alert-danger">
+          ⚠️ <span>Accepter un produit hors température ou à DLC dépassée engage la <strong>responsabilité pénale</strong> du responsable d'établissement.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- NETTOYAGE & DÉSINFECTION -->
+    <div class="module">
+      <div class="module-header">
+        <div class="module-icon icon-green">🧹</div>
+        <div>
+          <div class="module-title">Nettoyage & Désinfection</div>
+          <div class="module-subtitle">Plan de nettoyage obligatoire</div>
+        </div>
+      </div>
+      <div class="module-body">
+        <div class="rule-item">
+          <div class="rule-dot dot-red"></div>
+          <div class="rule-text"><strong>Nettoyer ≠ Désinfecter</strong> : d'abord éliminer les salissures, ensuite détruire les micro-organismes</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-red"></div>
+          <div class="rule-text">Respecter les <strong>5 étapes</strong> : Pré-nettoyage → Nettoyage → Rinçage → Désinfection → Rinçage final</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-orange"></div>
+          <div class="rule-text">Planches à découper : <strong>désinfection entre chaque type de produit</strong> (viande/poisson/légumes)</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-orange"></div>
+          <div class="rule-text">Plans de travail, enceintes froides, hottes : <strong>fréquences précisées</strong> dans le plan de nettoyage</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-yellow"></div>
+          <div class="rule-text">Chaque opération doit être <strong>tracée, datée et signée</strong> par l'agent</div>
+        </div>
+        <div class="alert-box alert-info">
+          ℹ️ <span>Le plan de nettoyage doit indiquer : <strong>quoi, quand, comment, avec quoi, qui</strong>. Un plan non respecté = non-conformité lors d'un contrôle.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- HYGIÈNE DU PERSONNEL -->
+    <div class="module">
+      <div class="module-header">
+        <div class="module-icon icon-red">🧑‍🍳</div>
+        <div>
+          <div class="module-title">Hygiène du Personnel</div>
+          <div class="module-subtitle">La première source de contamination</div>
+        </div>
+      </div>
+      <div class="module-body">
+        <div class="rule-item">
+          <div class="rule-dot dot-red"></div>
+          <div class="rule-text">Lavage des mains <strong>obligatoire</strong> : avant chaque prise de poste, après passage aux toilettes, après manipulation de déchets, après contact avec un produit cru</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-red"></div>
+          <div class="rule-text"><strong>Tenue professionnelle complète</strong> : veste, tablier, charlotte ou toque, chaussures de sécurité fermées</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-red"></div>
+          <div class="rule-text">Toute personne atteinte de <strong>gastro-entérite, infection cutanée, angine</strong> doit être écartée de la manipulation des aliments</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-orange"></div>
+          <div class="rule-text"><strong>Bijoux interdits</strong> en cuisine (bagues, bracelets, montres). Les ongles doivent être courts et sans vernis</div>
+        </div>
+        <div class="alert-box alert-danger">
+          ⚠️ <span>L'Homme est le <strong>vecteur principal</strong> de contamination en cuisine. Un porteur sain de Staphylococcus aureus peut contaminer massivement sans symptôme apparent.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TRAÇABILITÉ & DLC -->
+    <div class="module">
+      <div class="module-header">
+        <div class="module-icon icon-purple">🏷️</div>
+        <div>
+          <div class="module-title">Traçabilité & DLC</div>
+          <div class="module-subtitle">Obligation légale absolue</div>
+        </div>
+      </div>
+      <div class="module-body">
+        <div class="rule-item">
+          <div class="rule-dot dot-red"></div>
+          <div class="rule-text">Tout produit décongelé ou entamé doit recevoir une <strong>étiquette avec la DLC secondaire</strong> (date + contenu + allergènes)</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-red"></div>
+          <div class="rule-text">DLC secondaire maximale après ouverture : <strong>3 jours</strong> pour la plupart des préparations froides</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-orange"></div>
+          <div class="rule-text">Les <strong>plats témoins</strong> doivent être conservés 5 jours (80g minimum, réfrigérés à +4°C)</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-orange"></div>
+          <div class="rule-text">Archiver les étiquettes fournisseurs pour assurer la <strong>traçabilité amont</strong> (3 ans minimum)</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-yellow"></div>
+          <div class="rule-text">En cas de <strong>Toxi-Infection Alimentaire Collective (TIAC)</strong>, les plats témoins permettent d'identifier la source</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- DÉCONGÉLATION -->
+    <div class="module">
+      <div class="module-header">
+        <div class="module-icon icon-blue">🌡️</div>
+        <div>
+          <div class="module-title">Décongélation & Cuisson</div>
+          <div class="module-subtitle">Températures critiques à respecter</div>
+        </div>
+      </div>
+      <div class="module-body">
+        <div class="rule-item">
+          <div class="rule-dot dot-red"></div>
+          <div class="rule-text">Décongélation <strong>uniquement au réfrigérateur</strong> (sous +4°C) ou au four micro-ondes suivi d'une cuisson immédiate</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-red"></div>
+          <div class="rule-text"><strong>Jamais à température ambiante</strong> : risque de multiplication bactérienne exponentielle</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-red"></div>
+          <div class="rule-text">Températures de cuisson minimales : <strong>volaille +74°C</strong>, viande hachée <strong>+71°C</strong>, porc <strong>+63°C</strong></div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-orange"></div>
+          <div class="rule-text">Un produit décongelé <strong>ne peut jamais être recongélé</strong>. Cette règle est absolue et sans exception</div>
+        </div>
+        <div class="alert-box alert-warning">
+          ⚡ <span>Recongeler un produit décongelé multiplie par <strong>10 à 100 fois</strong> la charge bactérienne initiale. Risque vital pour les personnes fragilisées.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- GESTION DES DÉCHETS & NUISIBLES -->
+    <div class="module">
+      <div class="module-header">
+        <div class="module-icon icon-orange">🗑️</div>
+        <div>
+          <div class="module-title">Déchets, Nuisibles & Locaux</div>
+          <div class="module-subtitle">Prévention des contaminations extérieures</div>
+        </div>
+      </div>
+      <div class="module-body">
+        <div class="rule-item">
+          <div class="rule-dot dot-red"></div>
+          <div class="rule-text">Poubelles à <strong>couvercle et pédale</strong> obligatoires en cuisine. Vidage minimum toutes les 4 heures</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-red"></div>
+          <div class="rule-text">Local poubelles séparé, <strong>nettoyé et désinfecté</strong> quotidiennement, inaccessible aux nuisibles</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-orange"></div>
+          <div class="rule-text">Plan de <strong>dératisation et désinsectisation</strong> obligatoire avec contrat de prestataire agréé</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-orange"></div>
+          <div class="rule-text">Toute <strong>détection de nuisibles</strong> (rongeurs, blattes) doit être signalée et traitée immédiatement. Archiver les interventions</div>
+        </div>
+        <div class="rule-item">
+          <div class="rule-dot dot-yellow"></div>
+          <div class="rule-text">Locaux : revêtements <strong>lavables, imputrescibles</strong>. Angles arrondis. Éclairage suffisant (&gt;300 lux en production)</div>
+        </div>
+        <div class="alert-box alert-danger">
+          ⚠️ <span>La présence d'une seule trace de rongeur lors d'un contrôle peut entraîner la <strong>fermeture administrative immédiate</strong> de l'établissement.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════ QUIZ PAGE ══════════════ -->
+<div id="quizPage" class="page">
+  <div style="max-width:800px; margin:0 auto; padding:2rem;">
+    <div class="quiz-header">
+      <h2>🎯 QUIZ HYGIÈNE<br><em style="color:var(--red)">NIVEAU CONTRÔLE</em></h2>
+      <p>20 questions au niveau d'exigence d'une inspection sanitaire réelle. Taux de réussite attendu : +80% pour une équipe formée.</p>
+    </div>
+
+    <div id="quizStartScreen">
+      <div style="background:var(--card); border:1px solid var(--border); border-radius:14px; padding:28px; text-align:center; margin-bottom:1.5rem;">
+        <div style="font-size:3rem; margin-bottom:1rem;">📋</div>
+        <h3 style="font-family:'Bebas Neue',sans-serif; font-size:1.8rem; letter-spacing:2px; margin-bottom:0.5rem;">PRÊT POUR LE TEST ?</h3>
+        <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1.5rem;">20 questions couvrant toutes les thématiques HACCP. Chaque bonne réponse est expliquée pour renforcer l'apprentissage.</p>
+        <div style="display:flex; justify-content:center; gap:1.5rem; margin-bottom:1.5rem; flex-wrap:wrap;">
+          <div style="text-align:center;"><strong style="display:block; color:var(--yellow); font-family:'Bebas Neue',sans-serif; font-size:1.5rem;">31</strong><span style="font-size:0.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:1px;">questions</span></div>
+          <div style="text-align:center;"><strong style="display:block; color:var(--yellow); font-family:'Bebas Neue',sans-serif; font-size:1.5rem;">6</strong><span style="font-size:0.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:1px;">thématiques</span></div>
+          <div style="text-align:center;"><strong style="display:block; color:var(--yellow); font-family:'Bebas Neue',sans-serif; font-size:1.5rem;">★★★</strong><span style="font-size:0.75rem; color:var(--muted); text-transform:uppercase; letter-spacing:1px;">difficulté pro</span></div>
+        </div>
+        <button class="restart-btn" onclick="startQuiz()" style="font-size:1.1rem; padding:14px 40px; letter-spacing:2px;">COMMENCER LE QUIZ</button>
+      </div>
+    </div>
+
+    <div id="quizMain" style="display:none;">
+      <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="progressFill" style="width:0%"></div></div>
+      <div class="quiz-meta">
+        <div class="quiz-counter" id="questionCounter">Question 1 / 20</div>
+        <div class="quiz-score-live" id="scoreLive">✓ 0 — ✗ 0</div>
+      </div>
+      <div class="quiz-card" id="quizCard">
+        <div class="quiz-category" id="qCategory"></div>
+        <div class="quiz-question" id="qText"></div>
+        <div class="options-grid" id="optionsContainer"></div>
+        <div class="quiz-feedback" id="qFeedback"></div>
+      </div>
+      <button class="quiz-btn" id="nextBtn" onclick="nextQuestion()">QUESTION SUIVANTE →</button>
+    </div>
+
+    <div class="quiz-results" id="quizResults">
+      <div class="results-score" id="finalScore"></div>
+      <div class="results-label">Score final sur 20</div>
+      <div class="results-verdict" id="finalVerdict"></div>
+      <div class="results-sub" id="finalSub"></div>
+      <div class="results-breakdown">
+        <div class="breakdown-item b-correct"><strong id="bCorrect">0</strong><span>bonnes réponses</span></div>
+        <div class="breakdown-item b-wrong"><strong id="bWrong">0</strong><span>erreurs</span></div>
+      </div>
+      <button class="restart-btn" onclick="restartQuiz()">↺ RECOMMENCER</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ CLEANING GUIDE PAGE ══════════════ -->
+<div id="cleanPage" class="page">
+
+  <div class="clean-hero">
+    <div class="hero-badge" style="background:rgba(45,198,83,.1); border-color:rgba(45,198,83,.3); color:var(--green);">Plan de Nettoyage & Désinfection — HACCP</div>
+    <h1>GUIDE<br><em>NETTOYAGE</em></h1>
+    <p>Procédures détaillées par zone, fréquences réglementaires et produits à utiliser. À afficher et respecter impérativement.</p>
+  </div>
+
+  <div class="zone-tabs">
+    <button class="zone-tab-btn active" onclick="showZone('cuisine')">👨‍🍳 Cuisine</button>
+    <button class="zone-tab-btn" onclick="showZone('bar')">🍸 Bar</button>
+    <button class="zone-tab-btn" onclick="showZone('stockage')">📦 Stockage & Chambres froides</button>
+    <button class="zone-tab-btn" onclick="showZone('sanitaires')">🚿 Sanitaires & Vestiaires</button>
+    <button class="zone-tab-btn" onclick="showZone('produits')">🧴 Produits & Dilutions</button>
+  </div>
+
+  <!-- ─── CUISINE ─── -->
+  <div id="zone-cuisine" class="zone-panel active">
+    <div class="clean-container">
+
+      <div class="freq-legend">
+        <span style="font-size:0.78rem; color:var(--muted); font-weight:600; margin-right:4px;">FRÉQUENCES :</span>
+        <div class="freq-pill"><div class="freq-dot fd-service"></div>Après chaque service</div>
+        <div class="freq-pill"><div class="freq-dot fd-daily"></div>Quotidien</div>
+        <div class="freq-pill"><div class="freq-dot fd-weekly"></div>Hebdomadaire</div>
+        <div class="freq-pill"><div class="freq-dot fd-monthly"></div>Mensuel</div>
+      </div>
+
+      <div class="clean-tip">
+        <strong>Rappel méthode :</strong> Toujours suivre les 5 étapes dans l'ordre : <strong>Pré-nettoyage → Nettoyage (détergent) → Rinçage → Désinfection (biocide) → Rinçage final</strong>. Ne jamais mélanger détergent et désinfectant sauf produit bi-fonctionnel homologué. Respecter les temps de contact indiqués sur les fiches techniques.
+      </div>
+
+      <div class="task-section">
+        <div class="task-section-title">🔥 Zones de cuisson & équipements chauds</div>
+        <table class="task-table">
+          <thead><tr><th style="width:30%">Élément</th><th style="width:18%">Fréquence</th><th style="width:28%">Méthode</th><th style="width:24%">Produit</th></tr></thead>
+          <tbody>
+            <tr><td><div class="task-name priority-high">Plaques de cuisson / brûleurs</div><div class="task-method">Décaper les résidus carbonisés</div></td><td><span class="freq-badge fb-service">Après service</span></td><td>Gratter à chaud, détergent dégraissant, rincer abondamment</td><td class="task-product">Dégraissant pro dilué 2-5%</td></tr>
+            <tr><td><div class="task-name priority-high">Grilles four & lèchefrite</div><div class="task-method">Bain trempage si nécessaire</div></td><td><span class="freq-badge fb-service">Après service</span></td><td>Trempage 15 min, brosse inox, rinçage haute pression</td><td class="task-product">Dégraissant four concentré</td></tr>
+            <tr><td><div class="task-name priority-high">Intérieur du four</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Produit four en spray, temps contact 10 min, rincer</td><td class="task-product">Nettoyant four alcalin</td></tr>
+            <tr><td><div class="task-name priority-medium">Extérieur du four & façades</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Chiffon microfibre humide + dégraissant dilué</td><td class="task-product">Dégraissant dilué 1%</td></tr>
+            <tr><td><div class="task-name priority-high">Friteuse (vidange + nettoyage)</div><div class="task-method">Traçabilité qualité huile obligatoire</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Vidanger, nettoyer cuve à chaud, rincer, sécher avant reremplissage</td><td class="task-product">Dégraissant cuve + biocide alimentaire</td></tr>
+            <tr><td><div class="task-name priority-medium">Bain-marie & cloches</div></td><td><span class="freq-badge fb-service">Après service</span></td><td>Vidanger eau, désinfecter la cuve, rincer</td><td class="task-product">Détergent désinfectant</td></tr>
+            <tr><td><div class="task-name priority-medium">Salamandre / grill</div></td><td><span class="freq-badge fb-service">Après service</span></td><td>Gratter à chaud, passer en position verticale, nettoyage surface</td><td class="task-product">Dégraissant alcalin</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="task-section">
+        <div class="task-section-title">🧊 Zones de froid & préparation</div>
+        <table class="task-table">
+          <thead><tr><th style="width:30%">Élément</th><th style="width:18%">Fréquence</th><th style="width:28%">Méthode</th><th style="width:24%">Produit</th></tr></thead>
+          <tbody>
+            <tr><td><div class="task-name priority-high">Plans de travail inox</div><div class="task-method">Avant et après chaque préparation</div></td><td><span class="freq-badge fb-service">Après service</span></td><td>Détergent → rinçage → désinfection → séchage</td><td class="task-product">Détergent-désinfectant EN 1276</td></tr>
+            <tr><td><div class="task-name priority-high">Planches à découper</div><div class="task-method">Code couleur obligatoire</div></td><td><span class="freq-badge fb-service">Entre chaque usage</span></td><td>Désinfecter entre chaque type de produit, lave-vaisselle 65°C minimum</td><td class="task-product">Désinfectant alimentaire</td></tr>
+            <tr><td><div class="task-name priority-high">Frigo de cuisine (intérieur)</div></td><td><span class="freq-badge fb-weekly">Hebdomadaire</span></td><td>Vider, dégivrer si besoin, nettoyage complet, désinfection, aération avant remise en marche</td><td class="task-product">Détergent-désinfectant alimentaire</td></tr>
+            <tr><td><div class="task-name priority-medium">Frigo de cuisine (poignées, joints)</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Chiffon désinfectant sur joints et poignées (zones de contact)</div></td><td class="task-product">Désinfectant de surface</td></tr>
+            <tr><td><div class="task-name priority-medium">Robot-coupe & mixeur</div><div class="task-method">Démonter toutes pièces amovibles</div></td><td><span class="freq-badge fb-service">Après chaque usage</span></td><td>Démontage, lavage pièces, lave-vaisselle ou bac trempage, séchage</td><td class="task-product">Liquide vaisselle + désinfectant</td></tr>
+            <tr><td><div class="task-name priority-medium">Trancheuse</div><div class="task-method">Risque de coupure — EPI gants cotte de maille</div></td><td><span class="freq-badge fb-service">Après chaque usage</span></td><td>Démontage lame + plateau, nettoyage désinfection, séchage</td><td class="task-product">Désinfectant alimentaire EN 1276</td></tr>
+            <tr><td><div class="task-name priority-low">Cellule de refroidissement</div></td><td><span class="freq-badge fb-weekly">Hebdomadaire</span></td><td>Nettoyer parois, grilles, sol intérieur, désinfection</td><td class="task-product">Détergent-désinfectant</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="task-section">
+        <div class="task-section-title">🍳 Vaisselle, batterie & ustensiles</div>
+        <table class="task-table">
+          <thead><tr><th style="width:30%">Élément</th><th style="width:18%">Fréquence</th><th style="width:28%">Méthode</th><th style="width:24%">Produit</th></tr></thead>
+          <tbody>
+            <tr><td><div class="task-name priority-high">Plonge & bac de lavage</div></td><td><span class="freq-badge fb-service">Après service</span></td><td>Nettoyage complet bac, robinetterie, évier, désinfection</td><td class="task-product">Détergent désinfectant</td></tr>
+            <tr><td><div class="task-name priority-high">Lave-vaisselle professionnel</div><div class="task-method">Vérifier la dureté de l'eau</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Nettoyage filtres, bras de lavage, joints, cuve. Détartrage hebdomadaire</td><td class="task-product">Poudre lave-vaisselle pro + détartrant</td></tr>
+            <tr><td><div class="task-name priority-medium">Couteaux & coutellerie</div></td><td><span class="freq-badge fb-service">Après chaque usage</span></td><td>Lavage à 65°C minimum ou bac désinfectant, séchage, rangement protégé</td><td class="task-product">Détergent + désinfectant</td></tr>
+            <tr><td><div class="task-name priority-medium">Contenants gastronormes</div></td><td><span class="freq-badge fb-service">Après chaque usage</span></td><td>Lave-vaisselle 65°C ou bac trempage, vérification propreté avant usage</td><td class="task-product">Liquide vaisselle pro</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="task-section">
+        <div class="task-section-title">🏭 Structures, sols & ventilation</div>
+        <table class="task-table">
+          <thead><tr><th style="width:30%">Élément</th><th style="width:18%">Fréquence</th><th style="width:28%">Méthode</th><th style="width:24%">Produit</th></tr></thead>
+          <tbody>
+            <tr><td><div class="task-name priority-high">Sol cuisine</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Balayage humide → lavage → rinçage → séchage. Attention aux zones sous les équipements</td><td class="task-product">Détergent sol alimentaire</td></tr>
+            <tr><td><div class="task-name priority-high">Hotte et filtres à graisse</div><div class="task-method">Risque incendie si négligé</div></td><td><span class="freq-badge fb-weekly">Hebdomadaire</span></td><td>Démonter filtres, trempage bac dégraissant, rinçage, remontage. Nettoyer les parois internes</td><td class="task-product">Dégraissant puissant alcalin</td></tr>
+            <tr><td><div class="task-name priority-medium">Murs & carrelage</div></td><td><span class="freq-badge fb-weekly">Hebdomadaire</span></td><td>Lavage avec brosse murale, insister sur les jointures et angles</td><td class="task-product">Détergent désinfectant</td></tr>
+            <tr><td><div class="task-name priority-medium">Poubelles cuisine</div><div class="task-method">Couvercle pédale obligatoire</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Vider, laver intérieur et extérieur, désinfecter</td><td class="task-product">Désinfectant + désodorisant</td></tr>
+            <tr><td><div class="task-name priority-low">Conduits de ventilation</div></td><td><span class="freq-badge fb-monthly">Mensuel / trimestriel</span></td><td>Prestataire spécialisé recommandé — archiver les attestations de nettoyage</td><td class="task-product">Selon prestataire</td></tr>
+            <tr><td><div class="task-name priority-low">Siphons de sol</div></td><td><span class="freq-badge fb-weekly">Hebdomadaire</span></td><td>Déboucher, brosser, verser désinfectant, rincer</td><td class="task-product">Détartrant + désinfectant</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── BAR ─── -->
+  <div id="zone-bar" class="zone-panel">
+    <div class="clean-container">
+
+      <div class="freq-legend">
+        <span style="font-size:0.78rem; color:var(--muted); font-weight:600; margin-right:4px;">FRÉQUENCES :</span>
+        <div class="freq-pill"><div class="freq-dot fd-service"></div>Après chaque service</div>
+        <div class="freq-pill"><div class="freq-dot fd-daily"></div>Quotidien</div>
+        <div class="freq-pill"><div class="freq-dot fd-weekly"></div>Hebdomadaire</div>
+        <div class="freq-pill"><div class="freq-dot fd-monthly"></div>Mensuel</div>
+      </div>
+
+      <div class="clean-tip">
+        <strong>Spécificité bar :</strong> La machine à glaçons est un <strong>point critique microbiologique</strong> souvent négligé — la glace est un aliment et doit être traitée comme tel. Les bacs d'égouttement (drip trays) et les buses de la machine à café sont également des zones à fort risque de développement bactérien si le nettoyage n'est pas rigoureux et quotidien.
+      </div>
+
+      <div class="task-section">
+        <div class="task-section-title">🧊 Machine à glaçons & équipements frigorifiques</div>
+        <table class="task-table">
+          <thead><tr><th style="width:30%">Élément</th><th style="width:18%">Fréquence</th><th style="width:28%">Méthode</th><th style="width:24%">Produit</th></tr></thead>
+          <tbody>
+            <tr><td><div class="task-name priority-high">Bac à glace / machine à glaçons</div><div class="task-method">La glace est un aliment !</div></td><td><span class="freq-badge fb-weekly">Hebdomadaire</span></td><td>Vider la glace, nettoyer intérieur, désinfecter toutes surfaces, rincer abondamment, sécher avant remise en route</td><td class="task-product">Désinfectant alimentaire sans rinçage</td></tr>
+            <tr><td><div class="task-name priority-medium">Armoire réfrigérée bar</div></td><td><span class="freq-badge fb-monthly">Mensuel</span></td><td>Vider, nettoyer joints et clayettes, désinfecter parois, contrôle température</td><td class="task-product">Détergent-désinfectant alimentaire</td></tr>
+            <tr><td><div class="task-name priority-medium">Joints & poignées armoire réfrigérée</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Essuyer avec chiffon désinfectant, insister sur les plis des joints</td><td class="task-product">Chiffon désinfectant</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="task-section">
+        <div class="task-section-title">🍷 Équipements & verrerie</div>
+        <table class="task-table">
+          <thead><tr><th style="width:30%">Élément</th><th style="width:18%">Fréquence</th><th style="width:28%">Méthode</th><th style="width:24%">Produit</th></tr></thead>
+          <tbody>
+            <tr><td><div class="task-name priority-high">Verres (lave-verres)</div><div class="task-method">Température min. 60°C</div></td><td><span class="freq-badge fb-service">Après chaque service</span></td><td>Vérifier filtres et bras, dosage produit, polissage à la vapeur si nécessaire</td><td class="task-product">Liquide lave-verres + brillant</td></tr>
+            <tr><td><div class="task-name priority-high">Lave-verres (machine)</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Nettoyer filtres, bras de lavage, joints de porte, cuve. Détartrage hebdomadaire</td><td class="task-product">Nettoyant machine + détartrant</td></tr>
+            <tr><td><div class="task-name priority-high">Shakers, doseurs, cuillères</div></td><td><span class="freq-badge fb-service">Après chaque usage</span></td><td>Rinçage immédiat, lavage lave-verres ou bac désinfectant, séchage retourné</td><td class="task-product">Liquide vaisselle + désinfectant</td></tr>
+            <tr><td><div class="task-name priority-medium">Carafes & décanteurs</div></td><td><span class="freq-badge fb-service">Après chaque service</span></td><td>Rinçage eau chaude, brosser l'intérieur, séchage à l'air ou torchon propre dédié</td><td class="task-product">Pastilles nettoyage carafe</td></tr>
+            <tr><td><div class="task-name priority-medium">Tire-bouchons & ouvre-bouteilles</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Rinçage eau chaude, vérifier absence résidu, séchage</td><td class="task-product">Eau chaude + liquide vaisselle</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="task-section">
+        <div class="task-section-title">🏗️ Surfaces & structure du bar</div>
+        <table class="task-table">
+          <thead><tr><th style="width:30%">Élément</th><th style="width:18%">Fréquence</th><th style="width:28%">Méthode</th><th style="width:24%">Produit</th></tr></thead>
+          <tbody>
+            <tr><td><div class="task-name priority-high">Plan de travail bar (zinc / inox)</div></td><td><span class="freq-badge fb-service">Après chaque service</span></td><td>Dégraisser, désinfecter, essuyer. Inspecter zones sous équipements</td><td class="task-product">Détergent-désinfectant EN 1276</td></tr>
+            <tr><td><div class="task-name priority-high">Drip trays (bacs d'égouttement)</div><div class="task-method">Nid à bactéries si négligé</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Vider, démonter grille, brosser, désinfecter, rincer</td><td class="task-product">Désinfectant alimentaire</td></tr>
+            <tr><td><div class="task-name priority-medium">Comptoir côté client</div></td><td><span class="freq-badge fb-service">Après chaque service</span></td><td>Nettoyage surface + sous-verre, désinfection zones de contact</td><td class="task-product">Spray désinfectant surface</td></tr>
+            <tr><td><div class="task-name priority-medium">Sol derrière le bar</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Balayage → lavage → rinçage. Siphon à nettoyer et désinfecter</td><td class="task-product">Détergent sol + désinfectant</td></tr>
+            <tr><td><div class="task-name priority-medium">Étagères & présentoirs</div></td><td><span class="freq-badge fb-weekly">Hebdomadaire</span></td><td>Dépoussiérer, nettoyer les supports, essuyer les bouteilles à la base</td><td class="task-product">Produit multi-surfaces</td></tr>
+            <tr><td><div class="task-name priority-low">Meuble réfrigéré (façade & joints)</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Essuyer façade, désinfecter poignées et joints</td><td class="task-product">Chiffon désinfectant</td></tr>
+            <tr><td><div class="task-name priority-low">Poubelles & vide-bouteilles</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Vider, laver bac, désinfecter, changement sac</td><td class="task-product">Désinfectant + désodorisant</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="task-section">
+        <div class="task-section-title">☕ Machines à café & à chocolat</div>
+        <table class="task-table">
+          <thead><tr><th style="width:30%">Élément</th><th style="width:18%">Fréquence</th><th style="width:28%">Méthode</th><th style="width:24%">Produit</th></tr></thead>
+          <tbody>
+            <tr><td><div class="task-name priority-high">Porte-filtres & buses vapeur</div><div class="task-method">Résidu de lait = prolifération rapide</div></td><td><span class="freq-badge fb-service">Après chaque service</span></td><td>Purger buse vapeur immédiatement après usage, démonter porte-filtre, rétro-lavage</td><td class="task-product">Pastilles détartrant café</td></tr>
+            <tr><td><div class="task-name priority-high">Bac d'égouttement machine à café</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Vider, nettoyer bac et grille, désinfecter</td><td class="task-product">Détergent-désinfectant</td></tr>
+            <tr><td><div class="task-name priority-medium">Détartrage machine espresso</div></td><td><span class="freq-badge fb-monthly">Mensuel (ou selon dureté eau)</span></td><td>Programme de détartrage fabricant, rinçage complet 3 cycles</td><td class="task-product">Détartrant machine expresso</td></tr>
+            <tr><td><div class="task-name priority-medium">Broyeur à café</div></td><td><span class="freq-badge fb-weekly">Hebdomadaire</span></td><td>Brosser les meules, nettoyer la trémie, vider les résidus</td><td class="task-product">Pastilles nettoyage broyeur</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── STOCKAGE ─── -->
+  <div id="zone-stockage" class="zone-panel">
+    <div class="clean-container">
+
+      <div class="clean-tip">
+        <strong>Point de vigilance :</strong> Les chambres froides positives et négatives sont les zones les plus inspectées lors d'un contrôle sanitaire. Joints de porte, angles au sol et plafond sont des points critiques où se développent les moisissures. Un relevé de température défaillant + enceinte sale = double non-conformité.
+      </div>
+
+      <div class="task-section">
+        <div class="task-section-title">❄️ Chambres froides positives (0 à +4°C)</div>
+        <table class="task-table">
+          <thead><tr><th style="width:30%">Élément</th><th style="width:18%">Fréquence</th><th style="width:28%">Méthode</th><th style="width:24%">Produit</th></tr></thead>
+          <tbody>
+            <tr><td><div class="task-name priority-high">Sol chambre froide</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Balayage humide, lavage, rinçage, séchage. Vérifier siphon de sol</td><td class="task-product">Détergent alimentaire froid</td></tr>
+            <tr><td><div class="task-name priority-high">Parois intérieures & plafond</div></td><td><span class="freq-badge fb-weekly">Hebdomadaire</span></td><td>Brosser du haut vers le bas, insister sur joints et angles, désinfecter</td><td class="task-product">Détergent-désinfectant alimentaire</td></tr>
+            <tr><td><div class="task-name priority-high">Joints de porte</div><div class="task-method">Nid à moisissures — inspection visuelle quotidienne</div></td><td><span class="freq-badge fb-weekly">Hebdomadaire</span></td><td>Brosser soigneusement chaque pli du joint, désinfecter</td><td class="task-product">Désinfectant antifongique</td></tr>
+            <tr><td><div class="task-name priority-medium">Clayettes & grilles</div></td><td><span class="freq-badge fb-weekly">Hebdomadaire</span></td><td>Retirer, tremper bac dégraissant, brosser, rincer, sécher, réinstaller</td><td class="task-product">Détergent dégraissant</td></tr>
+            <tr><td><div class="task-name priority-medium">Évaporateur & serpentin</div></td><td><span class="freq-badge fb-monthly">Mensuel</span></td><td>Dégivrage si nécessaire, nettoyage grille de l'évaporateur, aspiration poussière</td><td class="task-product">Eau chaude + brosse douce</td></tr>
+            <tr><td><div class="task-name priority-low">Nettoyage complet (vide total)</div></td><td><span class="freq-badge fb-monthly">Mensuel</span></td><td>Vider entièrement, nettoyage haute pression, désinfection totale, aération</td><td class="task-product">Kit nettoyage enceinte froide</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="task-section">
+        <div class="task-section-title">🧊 Chambres froides négatives (−18°C)</div>
+        <table class="task-table">
+          <thead><tr><th style="width:30%">Élément</th><th style="width:18%">Fréquence</th><th style="width:28%">Méthode</th><th style="width:24%">Produit</th></tr></thead>
+          <tbody>
+            <tr><td><div class="task-name priority-high">Dégivrage & sol</div></td><td><span class="freq-badge fb-monthly">Mensuel ou si givre &gt; 5mm</span></td><td>Programmer dégivrage, évacuer eau fonte, nettoyer sol, laisser sécher avant remise en froid</td><td class="task-product">Eau chaude uniquement (froid négatif)</td></tr>
+            <tr><td><div class="task-name priority-medium">Parois & joints</div></td><td><span class="freq-badge fb-monthly">Mensuel</span></td><td>Contrôle visuel hebdomadaire, nettoyage lors du dégivrage mensuel</td><td class="task-product">Désinfectant alimentaire compatible froid</td></tr>
+            <tr><td><div class="task-name priority-medium">Clayettes</div></td><td><span class="freq-badge fb-monthly">Mensuel</span></td><td>Retirer lors du dégivrage, nettoyer à température ambiante, sécher avant remise</td><td class="task-product">Détergent-désinfectant</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="task-section">
+        <div class="task-section-title">📦 Réserves sèches & caves</div>
+        <table class="task-table">
+          <thead><tr><th style="width:30%">Élément</th><th style="width:18%">Fréquence</th><th style="width:28%">Méthode</th><th style="width:24%">Produit</th></tr></thead>
+          <tbody>
+            <tr><td><div class="task-name priority-high">Sol réserve</div></td><td><span class="freq-badge fb-weekly">Hebdomadaire</span></td><td>Balayage, lavage, vérifier absence nuisibles, inspecter périmètre</td><td class="task-product">Détergent sol</td></tr>
+            <tr><td><div class="task-name priority-medium">Étagères & rayonnages</div></td><td><span class="freq-badge fb-weekly">Hebdomadaire</span></td><td>Dépoussiérer, vérifier propreté, réorganiser selon FIFO</td><td class="task-product">Chiffon humide + désinfectant</td></tr>
+            <tr><td><div class="task-name priority-medium">Parois & angles</div><div class="task-method">Zones de ponte nuisibles</div></td><td><span class="freq-badge fb-monthly">Mensuel</span></td><td>Inspection visuelle nuisibles, nettoyage angles, vérification pièges</td><td class="task-product">Désinfectant + insecticide homologué</td></tr>
+            <tr><td><div class="task-name priority-low">Cave à vins / boissons</div></td><td><span class="freq-badge fb-monthly">Mensuel</th></td><td>Dépoussiérer, nettoyer sol, vérifier hygrométrie et ventilation</td><td class="task-product">Produit multi-surfaces</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── SANITAIRES ─── -->
+  <div id="zone-sanitaires" class="zone-panel">
+    <div class="clean-container">
+
+      <div class="clean-tip">
+        <strong>Obligations légales :</strong> Les sanitaires à destination du personnel doivent être séparés de ceux du public. Un lavabo à commande non-manuelle (coude, pédale, capteur) est obligatoire dans les vestiaires du personnel. L'absence de savon ou d'essuie-mains à usage unique est une <strong>non-conformité systématiquement relevée</strong> par les inspecteurs.
+      </div>
+
+      <div class="task-section">
+        <div class="task-section-title">🚻 Toilettes personnel & clients</div>
+        <table class="task-table">
+          <thead><tr><th style="width:30%">Élément</th><th style="width:18%">Fréquence</th><th style="width:28%">Méthode</th><th style="width:24%">Produit</th></tr></thead>
+          <tbody>
+            <tr><td><div class="task-name priority-high">Cuvettes WC</div></td><td><span class="freq-badge fb-daily">Quotidien (× 2 si fort flux)</span></td><td>Désinfectant sous-bord, brosser, rincer, désinfecter siège et lunette</td><td class="task-product">Détartrant WC désinfectant</td></tr>
+            <tr><td><div class="task-name priority-high">Lavabos & robinetterie</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Nettoyer vasque, robinet, siphon visible, désinfecter</td><td class="task-product">Détergent-désinfectant sanitaire</td></tr>
+            <tr><td><div class="task-name priority-high">Sol toilettes</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Lavage, désinfection, insister autour des cuvettes et siphons</td><td class="task-product">Désinfectant sol sanitaire</td></tr>
+            <tr><td><div class="task-name priority-medium">Distributeurs (savon, papier)</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Vérifier remplissage, nettoyer l'extérieur du distributeur</td><td class="task-product">Savon bactéricide EN 1040</td></tr>
+            <tr><td><div class="task-name priority-medium">Parois & carrelage</div></td><td><span class="freq-badge fb-weekly">Hebdomadaire</span></td><td>Nettoyage intégral des surfaces, insister joints et angles</td><td class="task-product">Détergent désinfectant</td></tr>
+            <tr><td><div class="task-name priority-low">Détartrage général</div></td><td><span class="freq-badge fb-monthly">Mensuel</span></td><td>Détartrer robinetterie, pommeaux, siphons</td><td class="task-product">Détartrant acide</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="task-section">
+        <div class="task-section-title">👗 Vestiaires & zone de prise de poste</div>
+        <table class="task-table">
+          <thead><tr><th style="width:30%">Élément</th><th style="width:18%">Fréquence</th><th style="width:28%">Méthode</th><th style="width:24%">Produit</th></tr></thead>
+          <tbody>
+            <tr><td><div class="task-name priority-high">Lavabo prise de poste (non-manuel)</div><div class="task-method">Savon bactéricide + essuie-mains obligatoires</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Nettoyage vasque, capteur ou levier, vérifier approvisionnement consommables</td><td class="task-product">Détergent-désinfectant + savon EN 1040</td></tr>
+            <tr><td><div class="task-name priority-medium">Sol vestiaires</div></td><td><span class="freq-badge fb-daily">Quotidien</span></td><td>Balayage, lavage, désinfection</td><td class="task-product">Détergent sol</td></tr>
+            <tr><td><div class="task-name priority-medium">Casiers & bancs</div></td><td><span class="freq-badge fb-weekly">Hebdomadaire</span></td><td>Essuyer extérieur casiers, nettoyer bancs et portemanteaux</td><td class="task-product">Spray multi-surfaces</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ─── PRODUITS ─── -->
+  <div id="zone-produits" class="zone-panel">
+    <div class="clean-container">
+
+      <div class="clean-tip">
+        <strong>Obligations documentaires :</strong> Chaque produit d'entretien utilisé doit disposer d'une <strong>Fiche de Données de Sécurité (FDS)</strong> et d'une fiche technique accessible au personnel. Les produits doivent être <strong>homologués contact alimentaire</strong> pour toutes les surfaces en contact avec les denrées. Conserver les produits dans leur emballage d'origine avec le bouchon de sécurité.
+      </div>
+
+      <div class="task-section">
+        <div class="task-section-title">🧴 Tableau des produits & dilutions</div>
+        <table class="task-table">
+          <thead><tr><th style="width:22%">Type de produit</th><th style="width:20%">Usage</th><th style="width:18%">Dilution standard</th><th style="width:20%">Temps de contact</th><th style="width:20%">⚠️ Incompatibilités</th></tr></thead>
+          <tbody>
+            <tr><td><div class="task-name">Dégraissant alcalin</div></td><td>Surfaces graisseuses, fours, hottes</td><td>2 à 5% selon salissures</td><td>5 à 10 min</td><td class="task-product">Ne pas mélanger avec acide</td></tr>
+            <tr><td><div class="task-name">Détergent-désinfectant EN 1276</div></td><td>Plans de travail, équipements contact aliments</td><td>0,5 à 1%</td><td>Selon fiche (min. 5 min)</td><td class="task-product">Ne pas mélanger avec chloré</td></tr>
+            <tr><td><div class="task-name">Désinfectant chloré (Javel)</div></td><td>Sols, surfaces non alimentaires</td><td>0,5% (5 L eau + 100 mL Javel à 9,6%)</td><td>15 min</td><td class="task-product">⚠️ Jamais avec acide (gaz chloré)</td></tr>
+            <tr><td><div class="task-name">Détartrant acide</div></td><td>Calcaire, robinetterie, lave-vaisselle</td><td>5 à 10%</td><td>10 à 20 min</td><td class="task-product">⚠️ Jamais avec Javel</td></tr>
+            <tr><td><div class="task-name">Désinfectant antifongique</div></td><td>Joints, angles, zones humides</td><td>Prêt à l'emploi ou 2%</td><td>15 min</td><td class="task-product">Rincer impérativement</td></tr>
+            <tr><td><div class="task-name">Produit nettoyage lignes bière</div></td><td>Lignes & pompes à bière</td><td>Selon notice fabricant</td><td>30 min minimum</td><td class="task-product">Rinçage triple obligatoire</td></tr>
+            <tr><td><div class="task-name">Détergent-désinfectant sanitaire</div></td><td>WC, lavabos, sanitaires</td><td>Prêt à l'emploi</td><td>5 min</td><td class="task-product">Usage non alimentaire uniquement</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="task-section">
+        <div class="task-section-title">🎨 Code couleur — Matériel de nettoyage</div>
+        <table class="task-table">
+          <thead><tr><th style="width:15%">Couleur</th><th style="width:35%">Zone d'utilisation</th><th style="width:50%">Matériel concerné</th></tr></thead>
+          <tbody>
+            <tr><td><span style="color:#e63946; font-weight:700; font-size:1.1rem;">● ROUGE</span></td><td>Toilettes & sanitaires</td><td>Brosses WC, lavettes, seaux, balais réservés aux sanitaires</td></tr>
+            <tr><td><span style="color:#ffd60a; font-weight:700; font-size:1.1rem;">● JAUNE</span></td><td>Zones à risque (sols cuisine)</td><td>Lavettes sol cuisine, balais, raclettes cuisine</td></tr>
+            <tr><td><span style="color:#2dc653; font-weight:700; font-size:1.1rem;">● VERT</span></td><td>Bar & salle</td><td>Lavettes bar et salle, chiffons comptoir</td></tr>
+            <tr><td><span style="color:#4895ef; font-weight:700; font-size:1.1rem;">● BLEU</span></td><td>Plans de travail cuisine</td><td>Lavettes surfaces alimentaires en cuisine</td></tr>
+            <tr><td><span style="color:#f4a261; font-weight:700; font-size:1.1rem;">● ORANGE</span></td><td>Équipements froids</td><td>Lavettes frigos, chambres froides, enceintes réfrigérées</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="task-section">
+        <div class="task-section-title">📋 Règles de sécurité manipulation produits</div>
+        <table class="task-table">
+          <thead><tr><th>Règle</th><th>Détail</th></tr></thead>
+          <tbody>
+            <tr><td><div class="task-name priority-high">EPI obligatoires</div></td><td>Gants de ménage, lunettes de protection pour les produits concentrés (alcalins, acides, chlorés)</td></tr>
+            <tr><td><div class="task-name priority-high">Ne jamais mélanger</div></td><td>Produit acide + Javel = dégagement de chlore gazeux (toxique). Produit alcalin + acide = réaction violente. Toujours utiliser séparément.</td></tr>
+            <tr><td><div class="task-name priority-medium">Dilution correcte</div></td><td>Toujours verser le produit concentré DANS l'eau (jamais l'inverse). Utiliser un doseur. Une sur-dilution est inefficace, une sous-dilution endommage les surfaces.</td></tr>
+            <tr><td><div class="task-name priority-medium">Étiquetage obligatoire</div></td><td>Tout produit transvasé dans un flacon secondaire doit être étiqueté avec le nom du produit, la dilution et la date de préparation.</td></tr>
+            <tr><td><div class="task-name priority-low">Stockage séparé</div></td><td>Les produits d'entretien doivent être stockés dans un local fermé à clé, séparé des denrées alimentaires, avec FDS accessibles.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ══════════════ CHECKLIST PAGE ══════════════ -->
+<div id="checklistPage" class="page">
+<div class="checklist-page">
+
+  <div class="checklist-hero">
+    <div class="hero-badge" style="background:rgba(255,214,10,.08); border-color:rgba(255,214,10,.3); color:var(--yellow);">À remplir chaque jour & chaque semaine</div>
+    <h1>CHECKLIST<br><em>HYGIÈNE</em></h1>
+    <p>Cochez chaque tâche accomplie, renseignez votre prénom et la date, puis envoyez le récapitulatif au responsable.</p>
+  </div>
+
+  <div class="cl-form-card">
+    <div class="cl-field">
+      <label>👤 Votre prénom</label>
+      <input type="text" id="empName" placeholder="Ex : Marie" oninput="updatePreview()">
+    </div>
+    <div class="cl-field">
+      <label>📅 Date</label>
+      <input type="date" id="clDate" oninput="updatePreview()">
+    </div>
+    <div class="cl-field">
+      <label>🏷️ Zone / Poste</label>
+      <select id="empZone" onchange="updatePreview()">
+        <option value="Cuisine">👨‍🍳 Cuisine</option>
+        <option value="Bar">🍸 Bar</option>
+        <option value="Cuisine + Bar">👨‍🍳🍸 Cuisine + Bar</option>
+        <option value="Salle">🍽️ Salle</option>
+        <option value="Plonge">🫧 Plonge</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="cl-section">
+    <div class="cl-section-header">
+      <span class="cl-section-badge badge-daily">🔴 Quotidien</span>
+      <span class="cl-section-title-text">Tâches du jour — Fin de service</span>
+      <span class="cl-counter" id="cntDaily">0 / 0</span>
+    </div>
+    <div class="cl-progress-line"><div class="cl-progress-fill" id="progDaily" style="width:0%"></div></div>
+    <div class="cl-items" id="itemsDaily"></div>
+  </div>
+
+  <div class="cl-section">
+    <div class="cl-section-header">
+      <span class="cl-section-badge badge-weekly">🟡 Hebdomadaire</span>
+      <span class="cl-section-title-text">Tâches de la semaine — À répartir sur 7 jours</span>
+      <span class="cl-counter" id="cntWeekly">0 / 0</span>
+    </div>
+    <div class="cl-progress-line"><div class="cl-progress-fill" id="progWeekly" style="width:0%"></div></div>
+    <div class="cl-items" id="itemsWeekly"></div>
+  </div>
+
+  <div class="cl-send-block">
+    <div style="font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:2px;">📤 ENVOYER LE RÉCAPITULATIF</div>
+    <p style="font-size:.85rem; color:var(--muted); max-width:480px; margin:0;">Le résumé sera pré-rempli dans votre application email. Vérifiez l'adresse du responsable avant d'envoyer.</p>
+    <div style="width:100%;">
+      <div class="cl-field">
+        <label>📧 Email du responsable</label>
+        <input type="email" id="managerEmail" value="lewagyuparis@gmail.com" oninput="updatePreview()">
+      </div>
+    </div>
+    <div class="cl-summary-preview" id="summaryPreview"></div>
+    <div class="cl-success-msg" id="successMsg">✅ Votre client email s'est ouvert avec le récapitulatif pré-rempli. Vérifiez et envoyez !</div>
+    <button class="cl-send-btn" id="sendBtn" onclick="sendChecklist()">VALIDER & ENVOYER →</button>
+    <div class="cl-send-note">⚠️ Votre prénom et la date sont obligatoires. Les tâches non cochées apparaîtront dans le récapitulatif.</div>
+  </div>
+
+</div>
+</div>
+
+<footer>
+  Référentiel basé sur le Règlement CE 852/2004, l'Arrêté du 21 décembre 2009 et les guides de bonnes pratiques d'hygiène HACCP — Usage interne
+</footer>
+
+<script>
+  function showPage(page) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+    const map = { ref: ['refPage',0], clean: ['cleanPage',1], checklist: ['checklistPage',2], quiz: ['quizPage',3] };
+    const [id, idx] = map[page] || ['refPage',0];
+    document.getElementById(id).classList.add('active');
+    document.querySelectorAll('.nav-tab')[idx].classList.add('active');
+    window.scrollTo(0,0);
+  }
+
+
+  function showZone(zone) {
+    document.querySelectorAll('.zone-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.zone-tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('zone-' + zone).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  const QUESTIONS = [
+    {
+      cat: 'cat-froid', catLabel: '❄️ Chaîne du Froid',
+      q: "Quelle est la température maximale de conservation des poissons frais et coquillages ?",
+      opts: ["+4°C", "+2°C", "+6°C", "+8°C"],
+      correct: 1,
+      exp: "Les poissons frais et coquillages se conservent à <strong>+2°C maximum</strong>. Cette limite est plus stricte que pour les autres réfrigérés (+4°C) car ces produits sont particulièrement sensibles aux bactéries pathogènes comme Listeria et Vibrio."
+    },
+    {
+      cat: 'cat-froid', catLabel: '❄️ Chaîne du Froid',
+      q: "De +63°C à quelle température faut-il descendre lors d'un refroidissement rapide, et en combien de temps ?",
+      opts: ["+10°C en 4 heures", "+8°C en 1 heure", "+10°C en 2 heures", "+15°C en 3 heures"],
+      correct: 2,
+      exp: "La réglementation impose de passer de +63°C à <strong>+10°C en moins de 2 heures</strong>. Au-delà, les bactéries se multiplient massivement dans la zone de danger (entre +4°C et +63°C)."
+    },
+    {
+      cat: 'cat-haccp', catLabel: '📋 HACCP',
+      q: "À quelle fréquence minimum les températures des enceintes réfrigérées doivent-elles être relevées ?",
+      opts: ["1 fois par jour", "2 fois par jour", "1 fois par semaine", "À chaque ouverture de porte"],
+      correct: 1,
+      exp: "La bonne pratique impose au <strong>minimum 2 relevés par jour</strong> — à l'ouverture et à la fermeture. Ces relevés doivent être enregistrés, datés et signés. Un inspecteur les demandera systématiquement."
+    },
+    {
+      cat: 'cat-stockage', catLabel: '📦 Stockage',
+      q: "Une conserve est légèrement bombée à la réception. Que faites-vous ?",
+      opts: ["On la réfrigère et on l'utilise sous 24h", "On la refuse et on ne l'ouvre jamais", "On l'ouvre pour vérifier l'odeur", "On l'utilise en priorité ce jour-là"],
+      correct: 1,
+      exp: "Une conserve bombée signale une production de gaz bactérienne — potentiellement <strong>Clostridium botulinum</strong>. Il ne faut <strong>jamais l'ouvrir</strong> : la toxine botulique est indétectable à l'odeur. Refus et destruction immédiate."
+    },
+    {
+      cat: 'cat-hygiene', catLabel: '🧑‍🍳 Hygiène perso.',
+      q: "Un cuisinier se coupe le doigt. Quelle est la procédure réglementaire correcte ?",
+      opts: [
+        "Rincer, pansement coloré (bleu/orange) + gants",
+        "Pansement chair discret pour ne pas alerter",
+        "Continuer si la plaie est petite",
+        "Signaler et arrêter de travailler immédiatement"
+      ],
+      correct: 0,
+      exp: "La procédure exige : désinfecter, puis poser un <strong>pansement de couleur vive (bleu ou orange)</strong> — détectable visuellement si il tombe dans un plat — et couvrir de gants. Les pansements chair sont interdits en cuisine."
+    },
+    {
+      cat: 'cat-nettoyage', catLabel: '🧹 Nettoyage',
+      q: "Quelle est la bonne séquence des 5 étapes du nettoyage-désinfection HACCP ?",
+      opts: [
+        "Nettoyage → Désinfection → Rinçage → Pré-nettoyage → Rinçage final",
+        "Désinfection → Nettoyage → Rinçage → Pré-nettoyage → Rinçage final",
+        "Pré-nettoyage → Nettoyage → Rinçage → Désinfection → Rinçage final",
+        "Rinçage → Pré-nettoyage → Nettoyage → Désinfection → Séchage"
+      ],
+      correct: 2,
+      exp: "La séquence réglementaire est : <strong>Pré-nettoyage → Nettoyage → Rinçage → Désinfection → Rinçage final</strong>. Sauter le pré-nettoyage rend l'opération inefficace : les matières organiques protègent les bactéries du désinfectant."
+    },
+    {
+      cat: 'cat-tracabilite', catLabel: '🏷️ Traçabilité',
+      q: "Combien de temps minimum les étiquettes fournisseurs doivent-elles être archivées ?",
+      opts: ["6 mois", "1 an", "3 ans", "10 ans"],
+      correct: 2,
+      exp: "Le Règlement CE 178/2002 impose de conserver les données de traçabilité <strong>3 ans minimum</strong>. En cas de TIAC, les autorités remontent jusqu'à la source via ces documents."
+    },
+    {
+      cat: 'cat-stockage', catLabel: '📦 Stockage',
+      q: "Où doit-on placer les viandes crues dans un réfrigérateur partagé ?",
+      opts: ["En haut pour être vite accessibles", "Au milieu", "En bas, séparées des produits cuits", "N'importe où si elles sont emballées"],
+      correct: 2,
+      exp: "Les produits crus doivent toujours être stockés <strong>en bas</strong> du réfrigérateur pour éviter que leur jus ne coule sur les produits cuits placés en dessous. C'est la règle fondamentale pour prévenir la contamination croisée."
+    },
+    {
+      cat: 'cat-froid', catLabel: '❄️ Chaîne du Froid',
+      q: "Quelle est la température minimale à cœur pour un plat chaud maintenu en service ?",
+      opts: ["+55°C", "+60°C", "+63°C", "+70°C"],
+      correct: 2,
+      exp: "La liaison chaude exige une température à cœur supérieure à <strong>+63°C en permanence</strong>. En dessous, les bactéries pathogènes comme Listeria et Salmonella survivent et se multiplient rapidement."
+    },
+    {
+      cat: 'cat-hygiene', catLabel: '🧑‍🍳 Hygiène perso.',
+      q: "Un employé a de la diarrhée depuis 2 jours. Quelle décision s'impose ?",
+      opts: [
+        "Il peut travailler avec des gants",
+        "Il travaille en salle uniquement",
+        "Il est écarté de la manipulation des aliments jusqu'à guérison",
+        "Il reprend après une journée de repos"
+      ],
+      correct: 2,
+      exp: "Toute personne avec des <strong>symptômes gastro-intestinaux</strong> doit être <strong>immédiatement écartée</strong> de la manipulation des aliments. Les gants ne protègent pas contre le norovirus ou les Salmonelles portées par un individu malade."
+    },
+    {
+      cat: 'cat-tracabilite', catLabel: '🏷️ Traçabilité',
+      q: "Qu'est-ce qu'un plat témoin et quel est son poids minimum réglementaire ?",
+      opts: ["50g conservé 3 jours", "80g conservé 5 jours à +4°C", "100g congelé 7 jours", "Une photo du plat suffit"],
+      correct: 1,
+      exp: "Les plats témoins sont des échantillons de <strong>minimum 80g conservés 5 jours à +4°C</strong>, hermétiquement emballés et identifiés. Ils permettent d'identifier l'agent pathogène en cas de TIAC."
+    },
+    {
+      cat: 'cat-nettoyage', catLabel: '🧹 Nettoyage',
+      q: "Même planche à découper pour le poulet cru, puis pour les tomates. Quel est le risque principal ?",
+      opts: [
+        "Aucun si la planche est rincée à l'eau",
+        "Contamination croisée par Campylobacter ou Salmonella",
+        "Risque faible si le poulet était frais du jour",
+        "Risque uniquement si le couteau n'est pas changé"
+      ],
+      correct: 1,
+      exp: "<strong>Campylobacter</strong> (1ère cause d'intoxication en France) et les Salmonelles contaminent fréquemment le poulet cru. Un rinçage à l'eau est insuffisant. La planche doit être désinfectée entre chaque type de produit."
+    },
+    {
+      cat: 'cat-haccp', catLabel: '📋 HACCP',
+      q: "Un thermomètre de chambre froide affiche +8°C ce matin. Première action ?",
+      opts: [
+        "Jeter tous les produits immédiatement",
+        "Continuer le service et surveiller",
+        "Vérifier avec un thermomètre de contrôle, évaluer chaque produit, consigner l'incident",
+        "Appeler le frigoriste et attendre sans toucher aux produits"
+      ],
+      correct: 2,
+      exp: "La procédure est : 1) Vérifier avec un thermomètre indépendant. 2) <strong>Évaluer chaque produit</strong> (aspect, délai d'exposition). 3) Consigner l'incident par écrit. 4) Décider du sort de chaque produit. 5) Appeler le technicien."
+    },
+    {
+      cat: 'cat-hygiene', catLabel: '🧑‍🍳 Hygiène perso.',
+      q: "Quelle est la durée minimale d'un lavage des mains efficace en restauration ?",
+      opts: ["5 secondes", "10 secondes", "20 à 30 secondes", "1 minute"],
+      correct: 2,
+      exp: "Le lavage des mains doit durer <strong>20 à 30 secondes minimum</strong> : savon bactéricide, friction entre doigts et poignets, brossage des ongles, rinçage, séchage essuie-mains à usage unique. Le gel hydroalcoolique seul est insuffisant en restauration."
+    },
+    {
+      cat: 'cat-tracabilite', catLabel: '🏷️ Traçabilité',
+      q: "Une mayonnaise industrielle ouverte aujourd'hui — quelle DLC secondaire appliquez-vous ?",
+      opts: ["Jusqu'à la DLC du pot", "3 jours maximum", "7 jours", "14 jours car produit acide"],
+      correct: 1,
+      exp: "La DLC secondaire d'une mayonnaise ouverte est de <strong>3 jours maximum</strong>, même si la DLC d'origine est plus lointaine. La DLC secondaire est toujours la plus restrictive entre la date fabricant et la règle d'usage."
+    },
+    {
+      cat: 'cat-nettoyage', catLabel: '🧹 Nettoyage',
+      q: "À quelle fréquence minimum les hottes doivent-elles être nettoyées ?",
+      opts: ["Une fois par an", "Selon le plan de nettoyage de l'établissement", "Uniquement avant un contrôle", "Jamais si aspirateur puissant"],
+      correct: 1,
+      exp: "La fréquence est fixée par le <strong>plan de nettoyage propre à chaque établissement</strong> (souvent hebdomadaire à mensuel). L'inspecteur vérifie que cette fréquence est définie, respectée et tracée. Une hotte graisseuse est aussi un risque d'incendie."
+    },
+    {
+      cat: 'cat-haccp', catLabel: '📋 HACCP',
+      q: "Que signifie HACCP ?",
+      opts: [
+        "Hygiène Alimentaire Contrôle Cuisine Produits",
+        "Health And Cleanliness Control Protocol",
+        "Hazard Analysis Critical Control Points",
+        "Hygiène Alimentaire et Contrôle des Conditions de Production"
+      ],
+      correct: 2,
+      exp: "<strong>HACCP = Hazard Analysis Critical Control Points</strong> (Analyse des dangers, points critiques pour leur maîtrise). Méthode préventive obligatoire dans toute l'UE depuis le Règlement CE 852/2004, reposant sur 7 principes."
+    },
+    {
+      cat: 'cat-haccp', catLabel: '📋 HACCP',
+      q: "Une TIAC : qu'est-ce que c'est et que doit-on faire ?",
+      opts: [
+        "Trouble intestinal individuel — pas d'obligation",
+        "Toxi-Infection Alimentaire Collective — déclaration obligatoire à l'ARS",
+        "Test d'inspection annuel — rapport interne",
+        "Toxi-infection en collectivité scolaire uniquement"
+      ],
+      correct: 1,
+      exp: "Une <strong>TIAC</strong> survient dès 2 cas similaires liés à une même source alimentaire. Sa déclaration à l'<strong>ARS</strong> est une obligation légale immédiate. Les autorités sanitaires conduisent ensuite une enquête épidémiologique."
+    },
+    {
+      cat: 'cat-stockage', catLabel: '📦 Stockage',
+      q: "FIFO : que signifie cette méthode et pourquoi l'appliquer ?",
+      opts: [
+        "First Inspection Final Output — protocole de contrôle",
+        "Fast Ingredient Flow Order — gestion des flux en cuisine",
+        "First In First Out — utiliser en premier ce qui est entré en premier",
+        "Food Internal Freeze Option — méthode de surgélation"
+      ],
+      correct: 2,
+      exp: "<strong>FIFO = Premier Entré, Premier Sorti</strong>. Les produits stockés en premier sont utilisés en premier, évitant ainsi d'utiliser des produits à DLC dépassée. En pratique : placer les nouvelles livraisons derrière le stock existant."
+    },
+    {
+      cat: 'cat-stockage', catLabel: '📦 Stockage',
+      q: "Comment doit-on procéder pour décongeler un produit alimentaire ?",
+      opts: [
+        "Au réfrigérateur ou au micro-ondes suivi d'une cuisson immédiate",
+        "À température ambiante si utilisé dans l'heure",
+        "Sous l'eau tiède du robinet",
+        "Sur le plan de travail à 18°C"
+      ],
+      correct: 0,
+      exp: "La décongélation doit se faire <strong>uniquement au réfrigérateur</strong> (sous +4°C) ou au micro-ondes immédiatement suivi d'une cuisson. À température ambiante, les bactéries se multiplient exponentiellement dans la zone de danger."
+    },
+    {
+      cat: 'cat-froid', catLabel: '❄️ Chaîne du Froid',
+      q: "Un produit décongelé peut-il être recongélé une fois ?",
+      opts: [
+        "Oui, si recongélé sous 24h",
+        "Oui, après cuisson complète uniquement",
+        "Non, jamais — règle absolue sans exception",
+        "Oui, si la rupture de chaîne était courte"
+      ],
+      correct: 2,
+      exp: "Recongeler un produit décongelé est <strong>absolument interdit</strong>. Cela multiplie par 10 à 100 la charge bactérienne initiale. La seule exception : décongeler, cuire complètement, puis recongeler le produit cuit."
+    },
+    {
+      cat: 'cat-hygiene', catLabel: '🧑‍🍳 Hygiène perso.',
+      q: "Quels bijoux sont autorisés en cuisine lors de la manipulation des aliments ?",
+      opts: [
+        "Alliance uniquement",
+        "Boucles d'oreilles discrètes",
+        "Montre si couverte d'un bracelet",
+        "Aucun bijou n'est autorisé"
+      ],
+      correct: 3,
+      exp: "<strong>Aucun bijou</strong> n'est autorisé en cuisine : bagues, bracelets, montres et piercings sont interdits. Les ongles doivent être courts et sans vernis. Chaque bijou est un réservoir de bactéries et peut tomber dans un plat."
+    },
+    {
+      cat: 'cat-nettoyage', catLabel: '🧹 Nettoyage',
+      q: "Peut-on mélanger un détergent acide et de la Javel pour un nettoyage plus efficace ?",
+      opts: [
+        "Oui, l'effet est synergique",
+        "Oui, si bien dilués tous les deux",
+        "Non, le mélange produit du chlore gazeux toxique",
+        "Oui, mais uniquement en extérieur"
+      ],
+      correct: 2,
+      exp: "Mélanger un acide et de la Javel (hypochlorite) produit du <strong>chlore gazeux</strong>, extrêmement toxique par inhalation. Ce mélange peut être mortel. Les produits doivent toujours être utilisés séparément et rincés entre deux applications."
+    },
+    {
+      cat: 'cat-tracabilite', catLabel: '🏷️ Traçabilité',
+      q: "Quelle mention est obligatoire sur l'étiquette d'un produit déballé et reconditionné en cuisine ?",
+      opts: [
+        "Le nom du cuisinier uniquement",
+        "La date du jour de reconditionnement",
+        "Nom du produit, DLC secondaire et allergènes",
+        "La date de livraison initiale"
+      ],
+      correct: 2,
+      exp: "Un produit recondisonné doit obligatoirement indiquer : <strong>le nom du produit, la DLC secondaire et les allergènes présents</strong>. C'est la réglementation sur la traçabilité interne. Une étiquette incomplète est une non-conformité lors d'un contrôle."
+    },
+    {
+      cat: 'cat-froid', catLabel: '❄️ Chaîne du Froid',
+      q: "Lors de la réception d'une livraison réfrigérée, quel délai maximum de rupture de chaîne est toléré ?",
+      opts: ["5 minutes", "15 minutes", "30 minutes", "1 heure si les produits restent frais"],
+      correct: 2,
+      exp: "La rupture de chaîne tolérée lors d'une réception est de <strong>30 minutes maximum</strong>. Au-delà, les produits doivent être évalués. La température à cœur doit être mesurée et enregistrée à la réception."
+    },
+    {
+      cat: 'cat-haccp', catLabel: '📋 HACCP',
+      q: "Quelle note dans AlimConfiance indique qu'aucune non-conformité n'a été relevée lors d'un contrôle ?",
+      opts: [
+        "Satisfaisant",
+        "Très satisfaisant",
+        "Bon",
+        "Conforme"
+      ],
+      correct: 1,
+      exp: "<strong>'Très satisfaisant'</strong> dans AlimConfiance signifie aucune non-conformité relevée. Les 4 niveaux sont : Très satisfaisant → Satisfaisant → À améliorer → À corriger de toute urgence (ce dernier pouvant entraîner une fermeture administrative)."
+    },
+    {
+      cat: 'cat-nettoyage', catLabel: '🧹 Nettoyage',
+      q: "Quelle est la règle pour les chiffons et lavettes selon les zones de nettoyage ?",
+      opts: [
+        "Un seul chiffon suffit s'il est bien rincé",
+        "Code couleur obligatoire — rouge sanitaires, bleu cuisine, vert bar/salle",
+        "Les lavettes jetables sont toujours imposées",
+        "Les lavettes peuvent être partagées si lavées en machine"
+      ],
+      correct: 1,
+      exp: "Le <strong>code couleur</strong> est obligatoire : rouge pour les sanitaires, bleu pour les surfaces alimentaires cuisine, vert pour le bar et la salle, jaune pour les sols cuisine, orange pour les enceintes froides. Mélanger les lavettes entre zones crée des contaminations croisées."
+    },
+    {
+      cat: 'cat-stockage', catLabel: '📦 Stockage',
+      q: "À quelle hauteur minimum les denrées doivent-elles être stockées par rapport au sol ?",
+      opts: ["5 cm", "10 cm", "15 cm", "Pas de règle si le sol est propre"],
+      correct: 2,
+      exp: "Tout stockage alimentaire doit être surélevé à <strong>minimum 15 cm du sol</strong>. Cela facilite le nettoyage, évite l'humidité, et rend détectable la présence de nuisibles. Un produit posé à même le sol est une non-conformité systématique."
+    },
+    {
+      cat: 'cat-hygiene', catLabel: '🧑‍🍳 Hygiène perso.',
+      q: "Quand le lavage des mains est-il obligatoire en cuisine ? (plusieurs situations — choisissez la réponse complète)",
+      opts: [
+        "Uniquement avant de commencer le service",
+        "Avant la prise de poste et après passage aux toilettes",
+        "Avant chaque poste, après les toilettes, après les déchets et après tout produit cru",
+        "Toutes les heures durant le service"
+      ],
+      correct: 2,
+      exp: "Le lavage des mains est obligatoire : <strong>avant chaque prise de poste, après les toilettes, après manipulation de déchets, après contact avec tout produit cru</strong>, et après s'être mouché. C'est la mesure préventive la plus efficace contre les contaminations."
+    },
+    {
+      cat: 'cat-haccp', catLabel: '📋 HACCP',
+      q: "La présence de traces de rongeurs lors d'un contrôle sanitaire peut entraîner quelle sanction immédiate ?",
+      opts: [
+        "Un simple avertissement écrit",
+        "Une amende de 500€",
+        "La fermeture administrative immédiate de l'établissement",
+        "Un délai de 15 jours pour corriger"
+      ],
+      correct: 2,
+      exp: "La présence confirmée de rongeurs est un danger sanitaire immédiat pouvant conduire à la <strong>fermeture administrative immédiate</strong> de l'établissement, sans délai. Les rongeurs transmettent la leptospirose, la salmonellose et contaminent massivement les denrées."
+    },
+    {
+      cat: 'cat-tracabilite', catLabel: '🏷️ Traçabilité',
+      q: "Quelle est la température maximale de conservation des viandes hachées fraîches ?",
+      opts: ["+4°C", "+2°C", "+7°C", "+6°C"],
+      correct: 1,
+      exp: "Les viandes hachées fraîches doivent être conservées à <strong>+2°C maximum</strong>, comme les poissons. Ce seuil très bas s'explique par la surface d'exposition bactérienne très élevée créée par le hachage. C'est l'un des produits les plus sensibles en cuisine."
+    }
+  ];
+
+  let currentQ = 0;
+  let wrongCount = 0;
+  let answered = false;
+  let shuffled = [];
+
+  function startQuiz() {
+    shuffled = [...QUESTIONS].sort(() => Math.random() - 0.5);
+    currentQ = 0; score = 0; wrongCount = 0;
+    document.getElementById('quizStartScreen').style.display = 'none';
+    document.getElementById('quizMain').style.display = 'block';
+    document.getElementById('quizResults').style.display = 'none';
+    renderQuestion();
+  }
+
+  function renderQuestion() {
+    answered = false;
+    const q = shuffled[currentQ];
+    document.getElementById('questionCounter').textContent = `Question ${currentQ + 1} / ${shuffled.length}`;
+    document.getElementById('scoreLive').textContent = `✓ ${score} — ✗ ${wrongCount}`;
+    document.getElementById('progressFill').style.width = `${(currentQ / shuffled.length) * 100}%`;
+    document.getElementById('qCategory').className = `quiz-category ${q.cat}`;
+    document.getElementById('qCategory').textContent = q.catLabel;
+    document.getElementById('qText').textContent = q.q;
+
+    const opts = document.getElementById('optionsContainer');
+    opts.innerHTML = '';
+    q.opts.forEach((o, i) => {
+      const btn = document.createElement('button');
+      btn.className = 'option-btn';
+      btn.textContent = o;
+      btn.onclick = () => selectAnswer(i);
+      opts.appendChild(btn);
+    });
+
+    document.getElementById('qFeedback').style.display = 'none';
+    document.getElementById('nextBtn').style.display = 'none';
+  }
+
+  function selectAnswer(idx) {
+    if(answered) return;
+    answered = true;
+    const q = shuffled[currentQ];
+    const btns = document.querySelectorAll('.option-btn');
+    btns.forEach(b => b.disabled = true);
+
+    if(idx === q.correct) {
+      btns[idx].classList.add('correct');
+      score++;
+      showFeedback(true, q.exp);
+    } else {
+      btns[idx].classList.add('wrong');
+      btns[q.correct].classList.add('correct');
+      wrongCount++;
+      showFeedback(false, q.exp);
+    }
+    document.getElementById('scoreLive').textContent = `✓ ${score} — ✗ ${wrongCount}`;
+    document.getElementById('nextBtn').style.display = 'block';
+    document.getElementById('nextBtn').textContent = currentQ + 1 < shuffled.length ? 'QUESTION SUIVANTE →' : 'VOIR LES RÉSULTATS →';
+  }
+
+  function showFeedback(correct, txt) {
+    const fb = document.getElementById('qFeedback');
+    fb.className = `quiz-feedback ${correct ? 'feedback-correct' : 'feedback-wrong'}`;
+    fb.innerHTML = (correct ? '✅ ' : '❌ ') + txt;
+    fb.style.display = 'block';
+  }
+
+  function nextQuestion() {
+    currentQ++;
+    if(currentQ >= shuffled.length) {
+      showResults();
+    } else {
+      renderQuestion();
+    }
+  }
+
+  function showResults() {
+    document.getElementById('quizMain').style.display = 'none';
+    const res = document.getElementById('quizResults');
+    res.style.display = 'block';
+    const pct = Math.round((score / shuffled.length) * 100);
+    document.getElementById('finalScore').textContent = `${score}/${shuffled.length}`;
+    document.getElementById('bCorrect').textContent = score;
+    document.getElementById('bWrong').textContent = wrongCount;
+
+    let verdict, sub;
+    if(pct >= 90) { verdict = "🏆 Excellent — Niveau inspecteur !"; sub = "Votre maîtrise de l'hygiène alimentaire est irréprochable. Vous êtes prêt(e) pour n'importe quel contrôle."; }
+    else if(pct >= 75) { verdict = "✅ Bon niveau professionnel"; sub = "Quelques points à consolider, mais votre équipe est dans la bonne voie. Renforcez les points manqués."; }
+    else if(pct >= 50) { verdict = "⚠️ Des lacunes à combler rapidement"; sub = "Un niveau insuffisant pour un contrôle réel. Revoir le référentiel sur les thématiques en erreur."; }
+    else { verdict = "🚨 Formation urgente requise"; sub = "Le score ne permettrait pas de passer un contrôle sanitaire. Une formation HACCP complète est indispensable."; }
+
+    document.getElementById('finalVerdict').textContent = verdict;
+    document.getElementById('finalSub').textContent = sub;
+  }
+
+  function restartQuiz() {
+    document.getElementById('quizResults').style.display = 'none';
+    startQuiz();
+  }
+
+  // ══════════════ CHECKLIST ══════════════
+  const DAILY_TASKS = [
+    { text: "Relevé des températures frigos & chambres froides (matin)", note: "Enregistrer le relevé dans le cahier HACCP", zone: "Cuisine" },
+    { text: "Relevé des températures frigos & chambres froides (soir)", note: "Vérifier anomalies et signaler", zone: "Cuisine" },
+    { text: "Nettoyage & désinfection des plans de travail inox", note: "5 étapes : pré-nettoyage → nettoyage → rinçage → désinfection → rinçage final", zone: "Cuisine" },
+    { text: "Désinfecter les planches à découper entre chaque type de produit", note: "Code couleur obligatoire — vérifier absence résidu", zone: "Cuisine" },
+    { text: "Nettoyage plaques de cuisson / brûleurs", note: "Gratter à chaud, dégraissant, rincer abondamment", zone: "Cuisine" },
+    { text: "Nettoyage intérieur du four", note: "Produit four en spray, temps de contact 10 min minimum", zone: "Cuisine" },
+    { text: "Nettoyage et vidange friteuse", note: "Traçabilité qualité huile obligatoire — noter la date sur le cahier", zone: "Cuisine" },
+    { text: "Nettoyage sol cuisine (balayage → lavage → rinçage)", note: "Insister sous les équipements et angles", zone: "Cuisine" },
+    { text: "Vidange et désinfection des poubelles cuisine", note: "Couvercle pédale — vider minimum toutes les 4h en service", zone: "Cuisine" },
+    { text: "Nettoyage plonge et bac de lavage", note: "Nettoyage bac, robinetterie, évier, désinfection", zone: "Cuisine" },
+    { text: "Nettoyage filtres lave-vaisselle professionnel", note: "Bras de lavage, joints, cuve — détartrage hebdomadaire prévu", zone: "Cuisine" },
+    { text: "Vérification DLC des produits en chambres froides", note: "Retirer tout produit dont la DLC est dépassée", zone: "Cuisine" },
+    { text: "Nettoyage plan de travail bar (zinc/inox)", note: "Dégraisser, désinfecter, essuyer après chaque service", zone: "Bar" },
+    { text: "Nettoyage et désinfection des drip trays (bacs d'égouttement)", note: "Vider, démonter grille, brosser, désinfecter, rincer", zone: "Bar" },
+    { text: "Nettoyage lave-verres (filtres, bras, joints, cuve)", note: "Vérifier température min. 60°C — dosage produit", zone: "Bar" },
+    { text: "Nettoyage porte-filtres & purge buses vapeur machine à café", note: "Purger immédiatement après usage — résidu lait = prolifération rapide", zone: "Bar" },
+    { text: "Vider et désinfecter bac d'égouttement machine à café", note: "Nettoyer bac et grille, désinfecter", zone: "Bar" },
+    { text: "Nettoyage sol derrière le bar", note: "Balayage → lavage → rinçage. Nettoyer et désinfecter le siphon", zone: "Bar" },
+    { text: "Vider et laver les poubelles / vide-bouteilles bar", note: "Laver bac, désinfecter, changer les sacs", zone: "Bar" },
+    { text: "Essuyer façade et désinfecter poignées meuble réfrigéré", note: "Insister sur les joints de porte", zone: "Bar" },
+    { text: "Lavage des mains — vérifier savon bactéricide & essuie-mains dispo.", note: "Obligation : savon EN 1040 + essuie-mains à usage unique", zone: "Cuisine + Bar" },
+    { text: "Contrôle tenue vestimentaire du personnel", note: "Veste, tablier, charlotte/toque — bijoux interdits", zone: "Cuisine + Bar" },
+    { text: "Nettoyage & désinfection toilettes personnel", note: "Cuvettes, lavabos, sol — 2x par jour si fort flux", zone: "Cuisine + Bar" },
+  ];
+
+  const WEEKLY_TASKS = [
+    { text: "Nettoyage complet intérieur frigo de cuisine", note: "Vider, dégivrer, nettoyage complet, désinfection, aération avant remise en marche", zone: "Cuisine" },
+    { text: "Nettoyage joints de porte frigos (antifongique)", note: "Brosser soigneusement chaque pli — nid à moisissures", zone: "Cuisine" },
+    { text: "Démontage et nettoyage hotte & filtres à graisse", note: "Risque incendie si négligé — trempage bac dégraissant", zone: "Cuisine" },
+    { text: "Nettoyage murs & carrelage cuisine", note: "Lavage brosse murale — insister jointures et angles", zone: "Cuisine" },
+    { text: "Nettoyage siphons de sol (déboucher, désinfecter)", note: "Verser désinfectant, rincer", zone: "Cuisine" },
+    { text: "Nettoyage et désinfection cellule de refroidissement", note: "Nettoyer parois, grilles, sol intérieur", zone: "Cuisine" },
+    { text: "Nettoyage complet robot-coupe & mixeur (toutes pièces démontées)", note: "Lave-vaisselle ou bac trempage, séchage", zone: "Cuisine" },
+    { text: "Nettoyage & désinfection trancheuse (EPI gants obligatoires)", note: "Démontage lame + plateau — risque de coupure", zone: "Cuisine" },
+    { text: "Nettoyage chambres froides positives (parois, plafond, joints)", note: "Du haut vers le bas — désinfectant antifongique sur joints", zone: "Cuisine" },
+    { text: "Nettoyage clayettes chambres froides", note: "Retirer, trempage dégraissant, brosser, rincer, sécher", zone: "Cuisine" },
+    { text: "Nettoyage sol réserves sèches + inspection nuisibles", note: "Vérifier absence de traces de rongeurs ou insectes", zone: "Cuisine" },
+    { text: "Nettoyage étagères & rayonnages réserves (FIFO vérifié)", note: "Dépoussiérer, réorganiser selon FIFO, vérifier DLC", zone: "Cuisine" },
+    { text: "Nettoyage & désinfection machine à glaçons bar", note: "Vider la glace — nettoyer toutes surfaces — sécher avant remise en route", zone: "Bar" },
+    { text: "Broyeur à café — nettoyage meules & trémie", note: "Brosser les meules, vider les résidus, pastilles nettoyage", zone: "Bar" },
+    { text: "Nettoyage étagères & présentoirs bar", note: "Dépoussiérer, nettoyer supports, essuyer bouteilles à la base", zone: "Bar" },
+    { text: "Nettoyage parois & carrelage sanitaires (détartrage joints)", note: "Nettoyage intégral des surfaces, insister joints et angles", zone: "Cuisine + Bar" },
+    { text: "Vérification & réapprovisionnement produits d'entretien", note: "Vérifier stocks savon, désinfectants, essuie-mains, sacs poubelles", zone: "Cuisine + Bar" },
+    { text: "Nettoyage vestiaires — sol, casiers, bancs", note: "Balayage, lavage sol, essuyer casiers et bancs", zone: "Cuisine + Bar" },
+  ];
+
+  let clState = { daily: {}, weekly: {} };
+
+  function initChecklist() {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('clDate').value = today;
+    renderTaskList('itemsDaily', DAILY_TASKS, 'daily');
+    renderTaskList('itemsWeekly', WEEKLY_TASKS, 'weekly');
+    updateCounters();
+    updatePreview();
+  }
+
+  function renderTaskList(containerId, tasks, type) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+    tasks.forEach((task, i) => {
+      const div = document.createElement('div');
+      div.className = 'cl-item';
+      div.id = `${type}_${i}`;
+      div.onclick = () => toggleTask(type, i);
+      const zoneClass = task.zone === 'Cuisine' ? 'zt-cuisine' : task.zone === 'Bar' ? 'zt-bar' : 'zt-both';
+      div.innerHTML = `
+        <div class="cl-checkbox"></div>
+        <div class="cl-label">
+          <strong>${task.text}</strong>
+          <small>${task.note}</small>
+        </div>
+        <span class="cl-zone-tag ${zoneClass}">${task.zone}</span>
+      `;
+      container.appendChild(div);
+    });
+  }
+
+  function toggleTask(type, i) {
+    clState[type][i] = !clState[type][i];
+    const el = document.getElementById(`${type}_${i}`);
+    el.classList.toggle('done', clState[type][i]);
+    updateCounters();
+    updatePreview();
+  }
+
+  function updateCounters() {
+    const dTotal = DAILY_TASKS.length;
+    const dDone = Object.values(clState.daily).filter(Boolean).length;
+    const wTotal = WEEKLY_TASKS.length;
+    const wDone = Object.values(clState.weekly).filter(Boolean).length;
+    document.getElementById('cntDaily').textContent = `${dDone} / ${dTotal}`;
+    document.getElementById('cntWeekly').textContent = `${wDone} / ${wTotal}`;
+    document.getElementById('progDaily').style.width = `${(dDone/dTotal)*100}%`;
+    document.getElementById('progWeekly').style.width = `${(wDone/wTotal)*100}%`;
+  }
+
+  function buildSummary() {
+    const name = document.getElementById('empName').value.trim() || '(prénom non renseigné)';
+    const date = document.getElementById('clDate').value || '(date non renseignée)';
+    const zone = document.getElementById('empZone').value;
+    const dDone = Object.values(clState.daily).filter(Boolean).length;
+    const wDone = Object.values(clState.weekly).filter(Boolean).length;
+
+    let lines = [];
+    lines.push(`══════════════════════════════════════`);
+    lines.push(`  RÉCAPITULATIF HYGIÈNE`);
+    lines.push(`══════════════════════════════════════`);
+    lines.push(`Employé(e) : ${name}`);
+    lines.push(`Date       : ${date}`);
+    lines.push(`Zone/Poste : ${zone}`);
+    lines.push(`Score      : ${dDone}/${DAILY_TASKS.length} quotidiennes | ${wDone}/${WEEKLY_TASKS.length} hebdomadaires`);
+    lines.push(``);
+    lines.push(`── TÂCHES QUOTIDIENNES ─────────────`);
+    DAILY_TASKS.forEach((t, i) => {
+      const done = clState.daily[i] ? '✅' : '❌';
+      lines.push(`${done} ${t.text} [${t.zone}]`);
+    });
+    lines.push(``);
+    lines.push(`── TÂCHES HEBDOMADAIRES ────────────`);
+    WEEKLY_TASKS.forEach((t, i) => {
+      const done = clState.weekly[i] ? '✅' : '❌';
+      lines.push(`${done} ${t.text} [${t.zone}]`);
+    });
+    lines.push(``);
+    lines.push(`Envoyé le : ${new Date().toLocaleString('fr-FR')}`);
+    return lines.join('\n');
+  }
+
+  function updatePreview() {
+    const preview = document.getElementById('summaryPreview');
+    const name = document.getElementById('empName').value.trim();
+    const date = document.getElementById('clDate').value;
+    if(name || date) {
+      preview.style.display = 'block';
+      preview.textContent = buildSummary();
+    }
+    const sendBtn = document.getElementById('sendBtn');
+    sendBtn.disabled = !(name && date);
+  }
+
+  function sendChecklist() {
+    const name = document.getElementById('empName').value.trim();
+    const date = document.getElementById('clDate').value;
+    if(!name || !date) return;
+    const email = document.getElementById('managerEmail').value.trim() || '';
+    const zone = document.getElementById('empZone').value;
+    const dDone = Object.values(clState.daily).filter(Boolean).length;
+    const wDone = Object.values(clState.weekly).filter(Boolean).length;
+    const subject = `Checklist Hygiène — ${name} — ${date} — ${zone}`;
+    const body = buildSummary();
+    const mailto = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+    document.getElementById('successMsg').style.display = 'block';
+    setTimeout(() => document.getElementById('successMsg').style.display = 'none', 5000);
+  }
+
+  // Init on load
+  window.addEventListener('DOMContentLoaded', () => { initChecklist(); });
+
+</script>
+</body>
+</html>
